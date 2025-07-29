@@ -1,0 +1,3 @@
+# Model Training
+
+This module is responsible for training machine learning models to predict Heart Rate Variability (HRV) using historical WHOOP data and behavioral features. It leverages frameworks like PyCaret, scikit-learn, XGBoost, and PyTorch to build predictive models for both next-day and 7-day rolling HRV forecasts. All experiments are tracked using MLflow, which logs model parameters, training metrics, and artifacts, while maintaining a registry of the top N performing models for deployment. The module focuses on creating robust, accurate models that can provide reliable HRV predictions for the downstream LLM agent to reason over. 

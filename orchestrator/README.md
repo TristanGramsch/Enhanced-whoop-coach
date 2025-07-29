@@ -1,0 +1,3 @@
+# Orchestrator
+
+This module uses Dagster to orchestrate and automate the entire HRV prediction pipeline, managing the complex dependencies between data collection, analysis, and prediction components. It defines both daily automated pipelines and on-demand workflows that seamlessly connect all modules: triggering WHOOP data pulls, processing journal entries, running model predictions, executing data intelligence analysis, and generating LLM agent forecasts. The orchestrator monitors task execution, handles failures gracefully, tracks pipeline runs, and ensures that each component receives the correct inputs at the right time, making the entire system reliable and maintainable while providing visibility into the health and performance of the prediction infrastructure. 

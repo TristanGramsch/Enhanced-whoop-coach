@@ -1,0 +1,3 @@
+# Shared
+
+This module contains common utilities, constants, and schemas that are reused across multiple components of the HRV prediction system. It centralizes shared functionality like data validation utilities, date formatting functions, metric thresholds, file path constants, and standardized data schemas that ensure consistency across all modules. By housing these common elements in a single location, the shared module reduces code duplication, maintains consistency in data formats and processing logic, and provides a single source of truth for system-wide configurations and utilities that multiple modules depend on. 

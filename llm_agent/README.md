@@ -1,0 +1,3 @@
+# LLM Agent
+
+This module implements an intelligent reasoning agent that synthesizes data from all other components to produce probabilistic HRV forecasts with natural language explanations. The agent uses carefully crafted prompts to analyze data summaries from the intelligence module, model predictions from the training pipeline, and behavioral insights from journal analysis to generate both short-term (next day) and medium-term (7-day) HRV predictions. Beyond just providing numerical forecasts, the agent justifies its predictions in human-readable language, explaining the reasoning behind its conclusions and identifying key factors that influenced the prediction, making the system interpretable and actionable for users. 

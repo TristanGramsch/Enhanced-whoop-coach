@@ -1,0 +1,3 @@
+# Journal Analysis
+
+This module processes daily voice recordings to extract behavioral and contextual features that can influence HRV predictions. It accepts audio input from users, transcribes the recordings using advanced speech-to-text models like Whisper, and then applies natural language processing to extract structured insights about lifestyle factors, stress levels, exercise plans, sleep quality, and other behavioral patterns. The extracted features are time-aligned with WHOOP sensor data and model predictions, providing crucial contextual information that helps the LLM agent understand the human factors behind HRV fluctuations and make more personalized, accurate predictions. 

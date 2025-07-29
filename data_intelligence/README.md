@@ -1,0 +1,3 @@
+# Data Intelligence
+
+This module serves as the analytical backbone of the HRV prediction system, analyzing raw WHOOP data, model predictions, and forecast accuracy to identify meaningful trends and patterns. It performs comprehensive data analysis to assess model reliability, detect anomalies in HRV patterns, and visualize prediction accuracy over time. The module generates structured daily and weekly summaries that distill complex data insights into digestible reports for the LLM agent, enabling it to make more informed predictions by understanding historical trends, seasonal patterns, and the reliability of different prediction scenarios. 
