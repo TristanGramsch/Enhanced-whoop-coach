@@ -4,6 +4,10 @@ import httpx
 import os
 from urllib.parse import urlencode
 import json
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI(title="WHOOP Data Server")
 
