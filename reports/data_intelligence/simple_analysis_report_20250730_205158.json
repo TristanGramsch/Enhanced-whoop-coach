@@ -1,0 +1,78 @@
+{
+  "generated_at": "2025-07-30T20:51:58.689359",
+  "data_summary": {
+    "total_cycles": 25,
+    "total_recoveries": 407,
+    "total_sleep_records": 353,
+    "total_workouts": 535,
+    "hrv_data_points": 407
+  },
+  "hrv_analysis": {
+    "total_readings": 407,
+    "mean_hrv": 105.80270005405406,
+    "median_hrv": 108.03408,
+    "min_hrv": 44.536835,
+    "max_hrv": 162.12173,
+    "std_dev": 23.07447632307721,
+    "recent_trend": {
+      "recent_7d_avg": 127.29404628571429,
+      "previous_7d_avg": 131.74401285714285,
+      "change_percent": -3.377737230650398,
+      "direction": "declining"
+    },
+    "hrv_categories": {
+      "counts": {
+        "very_low": 0,
+        "low": 0,
+        "moderate": 2,
+        "high": 16,
+        "very_high": 389
+      },
+      "percentages": {
+        "very_low": 0.0,
+        "low": 0.0,
+        "moderate": 0.4914004914004914,
+        "high": 3.9312039312039313,
+        "very_high": 95.57739557739558
+      },
+      "dominant_category": "very_high"
+    }
+  },
+  "recovery_analysis": {
+    "total_readings": 407,
+    "mean_recovery": 57.03931203931204,
+    "median_recovery": 62.0,
+    "min_recovery": 1.0,
+    "max_recovery": 99.0,
+    "std_dev": 27.575841277930994,
+    "recovery_zones": {
+      "counts": {
+        "red": 76,
+        "yellow": 152,
+        "green": 179
+      },
+      "percentages": {
+        "red": 18.67321867321867,
+        "yellow": 37.34643734643734,
+        "green": 43.980343980343974
+      }
+    }
+  },
+  "sleep_analysis": {
+    "sleep_performance": {
+      "mean": 88.79036827195468,
+      "median": 92.0,
+      "min": 17.0,
+      "max": 100.0
+    },
+    "sleep_duration": {
+      "mean_hours": 8.757974388574127,
+      "median_hours": 8.837209722222223,
+      "min_hours": 1.2897491666666667,
+      "max_hours": 14.780372777777778
+    }
+  },
+  "recommendations": [
+    "Recent recovery scores are in the yellow/red zone. Focus on rest."
+  ]
+}

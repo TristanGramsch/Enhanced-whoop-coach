@@ -1,0 +1,51 @@
+{
+  "date": "2025-07-30",
+  "analysis_available": true,
+  "insights_summary": "Low stress level (4/10); Exercise activity mentioned; Caffeine intake mentioned; Sleep quality described as good; Energy levels described as high; Overall emotional tone: positive",
+  "key_factors": {
+    "stress_level": 4,
+    "overall_tone": "positive",
+    "exercise_mentioned": true,
+    "sleep_quality": "good",
+    "energy_level": "high"
+  },
+  "full_analysis": {
+    "date": "2025-07-30T20:56:39.086649",
+    "text_length": 536,
+    "word_count": 81,
+    "sentiment_indicators": {
+      "positive_mentions": 2,
+      "stress_mentions": 1,
+      "positive_ratio": 0.024691358024691357,
+      "stress_ratio": 0.012345679012345678,
+      "sentiment_balance": 1
+    },
+    "behavioral_factors": {
+      "exercise_mentioned": true,
+      "exercise_frequency": 3,
+      "alcohol_mentioned": false,
+      "alcohol_frequency": 0,
+      "caffeine_mentioned": true,
+      "caffeine_frequency": 1,
+      "work_stress_mentioned": true,
+      "work_stress_frequency": 4,
+      "travel_mentioned": false
+    },
+    "health_mentions": {
+      "sleep_mentioned": true,
+      "sleep_frequency": 3,
+      "sleep_quality_mentioned": "good",
+      "energy_mentioned": "high"
+    },
+    "lifestyle_factors": {
+      "nutrition_mentioned": true,
+      "social_activity": false,
+      "screen_time_mentioned": false
+    },
+    "stress_level": 4,
+    "overall_tone": "positive",
+    "audio_file": "2025-07-30.mp4",
+    "transcription": "Today was a pretty good day overall. I woke up feeling rested after getting about 8 hours of sleep. \n            Had my usual coffee this morning and felt energized for my workout. Did a 30-minute run and felt great afterwards.\n            Work was busy with a few meetings, but nothing too stressful. \n            Had lunch with a colleague which was nice and relaxing.\n            In the evening, I did some yoga to wind down and prepare for bed.\n            Feeling grateful and looking forward to tomorrow.",
+    "transcription_method": "mock"
+  }
+}
