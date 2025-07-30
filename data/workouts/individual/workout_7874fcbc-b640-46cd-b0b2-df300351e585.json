@@ -1,0 +1,31 @@
+{
+  "id": "7874fcbc-b640-46cd-b0b2-df300351e585",
+  "v1_id": 1557978596,
+  "user_id": 18831249,
+  "created_at": "2025-03-15T13:20:43.683Z",
+  "updated_at": "2025-03-15T13:23:05.843Z",
+  "start": "2025-03-14T23:45:00.804Z",
+  "end": "2025-03-15T02:22:29.483Z",
+  "timezone_offset": "-04:00",
+  "sport_name": "functional-fitness",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 13.863557,
+    "average_heart_rate": 116,
+    "max_heart_rate": 164,
+    "kilojoule": 4451.223,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 1215094,
+      "zone_one_milli": 5431380,
+      "zone_two_milli": 2112028,
+      "zone_three_milli": 689255,
+      "zone_four_milli": 961,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": 48
+}

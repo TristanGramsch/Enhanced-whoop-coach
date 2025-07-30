@@ -1,0 +1,31 @@
+{
+  "id": "09db2bc5-2c1a-4435-aaff-04932d69df34",
+  "v1_id": 1835059121,
+  "user_id": 18831249,
+  "created_at": "2025-07-12T21:32:02.882Z",
+  "updated_at": "2025-07-12T22:14:36.657Z",
+  "start": "2025-07-12T18:18:00.393Z",
+  "end": "2025-07-12T21:19:29.953Z",
+  "timezone_offset": "-04:00",
+  "sport_name": "basketball",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 16.792206,
+    "average_heart_rate": 124,
+    "max_heart_rate": 178,
+    "kilojoule": 6555.486,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 1491931,
+      "zone_one_milli": 3564548,
+      "zone_two_milli": 3020393,
+      "zone_three_milli": 2477245,
+      "zone_four_milli": 335481,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": 17
+}

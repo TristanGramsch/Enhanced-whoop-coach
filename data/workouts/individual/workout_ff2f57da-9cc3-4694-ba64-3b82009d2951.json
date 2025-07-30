@@ -1,0 +1,31 @@
+{
+  "id": "ff2f57da-9cc3-4694-ba64-3b82009d2951",
+  "v1_id": 1796952127,
+  "user_id": 18831249,
+  "created_at": "2025-06-27T21:43:34.417Z",
+  "updated_at": "2025-06-28T02:10:50.605Z",
+  "start": "2025-06-27T19:45:30.861Z",
+  "end": "2025-06-27T21:23:59.446Z",
+  "timezone_offset": "-04:00",
+  "sport_name": "rock-climbing",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 8.044238,
+    "average_heart_rate": 99,
+    "max_heart_rate": 141,
+    "kilojoule": 1672.8751,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 2388841,
+      "zone_one_milli": 3466491,
+      "zone_two_milli": 52873,
+      "zone_three_milli": 0,
+      "zone_four_milli": 0,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": 60
+}

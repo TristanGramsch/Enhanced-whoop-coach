@@ -1,0 +1,31 @@
+{
+  "id": "9e24b2b4-9c33-4bd4-aecf-a0c26cdec2d0",
+  "v1_id": 1313750913,
+  "user_id": 18831249,
+  "created_at": "2024-11-03T09:15:06.670Z",
+  "updated_at": "2024-11-03T09:15:10.050Z",
+  "start": "2024-11-03T04:30:00.818Z",
+  "end": "2024-11-03T04:50:59.156Z",
+  "timezone_offset": "-05:00",
+  "sport_name": "dance",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 7.6062922,
+    "average_heart_rate": 124,
+    "max_heart_rate": 167,
+    "kilojoule": 731.6197,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 16342,
+      "zone_one_milli": 354744,
+      "zone_two_milli": 279744,
+      "zone_three_milli": 200912,
+      "zone_four_milli": 403750,
+      "zone_five_milli": 2884
+    }
+  },
+  "sport_id": 42
+}

@@ -1,0 +1,31 @@
+{
+  "id": "6274c7cd-7c16-418d-bbf9-d2e23872fd5c",
+  "v1_id": 1278114756,
+  "user_id": 18831249,
+  "created_at": "2024-10-13T00:20:26.218Z",
+  "updated_at": "2024-10-13T08:43:08.929Z",
+  "start": "2024-10-12T20:00:00.762Z",
+  "end": "2024-10-12T21:53:59.493Z",
+  "timezone_offset": "-05:00",
+  "sport_name": "climber",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 10.674606,
+    "average_heart_rate": 99,
+    "max_heart_rate": 170,
+    "kilojoule": 2099.8047,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 1741892,
+      "zone_one_milli": 2334052,
+      "zone_two_milli": 1839970,
+      "zone_three_milli": 493151,
+      "zone_four_milli": 382604,
+      "zone_five_milli": 47101
+    }
+  },
+  "sport_id": 83
+}

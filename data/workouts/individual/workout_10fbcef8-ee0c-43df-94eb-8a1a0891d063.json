@@ -1,0 +1,14 @@
+{
+  "id": "10fbcef8-ee0c-43df-94eb-8a1a0891d063",
+  "v1_id": 1686301926,
+  "user_id": 18831249,
+  "created_at": "2025-05-13T13:31:39.611Z",
+  "updated_at": "2025-05-13T13:33:31.880Z",
+  "start": "2025-05-13T13:25:13.409Z",
+  "end": "2025-05-13T13:31:39.353Z",
+  "timezone_offset": "-04:00",
+  "sport_name": "increase_alertness",
+  "score_state": "SCORED",
+  "score": null,
+  "sport_id": 244
+}

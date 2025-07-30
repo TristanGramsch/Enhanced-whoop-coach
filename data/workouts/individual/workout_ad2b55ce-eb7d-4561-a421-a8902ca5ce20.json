@@ -1,0 +1,31 @@
+{
+  "id": "ad2b55ce-eb7d-4561-a421-a8902ca5ce20",
+  "v1_id": 1266117492,
+  "user_id": 18831249,
+  "created_at": "2024-10-05T18:17:04.929Z",
+  "updated_at": "2024-10-05T23:05:54.275Z",
+  "start": "2024-10-05T17:33:00.305Z",
+  "end": "2024-10-05T18:02:59.841Z",
+  "timezone_offset": "-05:00",
+  "sport_name": "stadium-steps",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 7.7655296,
+    "average_heart_rate": 114,
+    "max_heart_rate": 171,
+    "kilojoule": 895.83514,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 420091,
+      "zone_one_milli": 204796,
+      "zone_two_milli": 318179,
+      "zone_three_milli": 594076,
+      "zone_four_milli": 253781,
+      "zone_five_milli": 8652
+    }
+  },
+  "sport_id": 261
+}

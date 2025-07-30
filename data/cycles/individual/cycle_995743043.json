@@ -1,0 +1,16 @@
+{
+  "id": 995743043,
+  "user_id": 18831249,
+  "created_at": "2025-07-29T15:30:17.176Z",
+  "updated_at": "2025-07-30T14:03:55.315Z",
+  "start": "2025-07-29T03:50:18.510Z",
+  "end": "2025-07-30T04:04:34.650Z",
+  "timezone_offset": "-04:00",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 17.973364,
+    "kilojoule": 14069.805,
+    "average_heart_rate": 63,
+    "max_heart_rate": 198
+  }
+}

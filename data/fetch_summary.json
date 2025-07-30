@@ -1,0 +1,14 @@
+{
+  "fetch_completed_at": "2025-07-30T15:25:00.154817",
+  "fetch_duration_seconds": 153.815225,
+  "data_types_fetched": [
+    "user_profile",
+    "body_measurements",
+    "cycles",
+    "recovery",
+    "sleep",
+    "workouts"
+  ],
+  "api_version": "v2",
+  "notes": "Data fetched using WHOOP API v2. v1 API will be deprecated by October 1, 2025."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "14979ce3-318b-41fa-9d14-6d1cc5e96b7b",
+  "v1_id": 1858603479,
+  "user_id": 18831249,
+  "created_at": "2025-07-22T01:41:10.755Z",
+  "updated_at": "2025-07-22T01:41:14.563Z",
+  "start": "2025-07-22T00:06:00.310Z",
+  "end": "2025-07-22T00:58:29.280Z",
+  "timezone_offset": "-04:00",
+  "sport_name": "activity",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 11.04451,
+    "average_heart_rate": 126,
+    "max_heart_rate": 168,
+    "kilojoule": 1924.3668,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 491990,
+      "zone_one_milli": 858990,
+      "zone_two_milli": 989000,
+      "zone_three_milli": 797990,
+      "zone_four_milli": 11000,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": -1
+}

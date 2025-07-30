@@ -1,0 +1,31 @@
+{
+  "id": "ead5a28e-67f2-49b8-9a63-406b291d6b25",
+  "v1_id": 1199311584,
+  "user_id": 18831249,
+  "created_at": "2024-08-26T04:09:54.904Z",
+  "updated_at": "2024-08-26T04:09:58.369Z",
+  "start": "2024-08-25T22:03:00.673Z",
+  "end": "2024-08-25T22:34:29.540Z",
+  "timezone_offset": "-05:00",
+  "sport_name": "swimming",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 5.9583874,
+    "average_heart_rate": 106,
+    "max_heart_rate": 149,
+    "kilojoule": 663.12256,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 101898,
+      "zone_one_milli": 973772,
+      "zone_two_milli": 629639,
+      "zone_three_milli": 181673,
+      "zone_four_milli": 1923,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": 33
+}

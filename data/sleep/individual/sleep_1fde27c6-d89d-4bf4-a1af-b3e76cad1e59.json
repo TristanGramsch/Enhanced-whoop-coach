@@ -1,0 +1,34 @@
+{
+  "id": "1fde27c6-d89d-4bf4-a1af-b3e76cad1e59",
+  "v1_id": 1394452083,
+  "user_id": 18831249,
+  "created_at": "2024-12-22T12:48:24.917Z",
+  "updated_at": "2024-12-22T12:48:24.917Z",
+  "start": "2024-12-22T03:45:24.595Z",
+  "end": "2024-12-22T12:20:40.948Z",
+  "timezone_offset": "-04:00",
+  "nap": false,
+  "score_state": "SCORED",
+  "score": {
+    "stage_summary": {
+      "total_in_bed_time_milli": 30915392,
+      "total_awake_time_milli": 2220658,
+      "total_no_data_time_milli": 0,
+      "total_light_sleep_time_milli": 15833057,
+      "total_slow_wave_sleep_time_milli": 4441426,
+      "total_rem_sleep_time_milli": 8420251,
+      "sleep_cycle_count": 7,
+      "disturbance_count": 13
+    },
+    "sleep_needed": {
+      "baseline_milli": 27490235,
+      "need_from_sleep_debt_milli": 0,
+      "need_from_recent_strain_milli": 3254883,
+      "need_from_recent_nap_milli": 0
+    },
+    "respiratory_rate": 14.916992,
+    "sleep_performance_percentage": 93.0,
+    "sleep_consistency_percentage": 86.0,
+    "sleep_efficiency_percentage": 93.25193
+  }
+}

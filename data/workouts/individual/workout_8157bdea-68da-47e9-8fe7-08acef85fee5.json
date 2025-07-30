@@ -1,0 +1,31 @@
+{
+  "id": "8157bdea-68da-47e9-8fe7-08acef85fee5",
+  "v1_id": 1391975458,
+  "user_id": 18831249,
+  "created_at": "2024-12-20T20:51:49.799Z",
+  "updated_at": "2024-12-20T20:51:53.315Z",
+  "start": "2024-12-20T16:48:00.344Z",
+  "end": "2024-12-20T17:10:29.917Z",
+  "timezone_offset": "-03:00",
+  "sport_name": "baseball",
+  "score_state": "SCORED",
+  "score": {
+    "strain": 6.1245146,
+    "average_heart_rate": 116,
+    "max_heart_rate": 160,
+    "kilojoule": 656.63983,
+    "percent_recorded": 1.0,
+    "distance_meter": null,
+    "altitude_gain_meter": null,
+    "altitude_change_meter": null,
+    "zone_durations": {
+      "zone_zero_milli": 449914,
+      "zone_one_milli": 553686,
+      "zone_two_milli": 307559,
+      "zone_three_milli": 38453,
+      "zone_four_milli": 0,
+      "zone_five_milli": 0
+    }
+  },
+  "sport_id": 16
+}
