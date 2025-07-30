@@ -1,0 +1,14 @@
+{
+  "date": "2025-07-30",
+  "transcript": "Today has been quite a day. I woke up feeling pretty good after getting about 7 hours of sleep last night. \n        Had my usual morning coffee and did a 30-minute workout before starting work. Work was pretty stressful with back-to-back \n        meetings and a tight deadline, so my stress level was probably around a 6 out of 10. I tried to manage it with some \n        deep breathing exercises during breaks. For lunch, I had a salad and some water, trying to eat healthier this week. \n        In the evening, I went for a run which really helped clear my head and brought my stress down to about a 3. \n        I'm feeling optimistic about tomorrow and planning to get to bed early tonight to ensure good recovery. \n        Overall energy level today was good, maybe a 7 out of 10. I'm grateful for the opportunity to exercise and \n        decompress after a busy day.",
+  "sentiment_score": 0.8,
+  "stress_level": 6,
+  "sleep_quality_mentioned": null,
+  "exercise_intensity_mentioned": null,
+  "alcohol_mentioned": false,
+  "caffeine_mentioned": true,
+  "illness_mentioned": false,
+  "travel_mentioned": false,
+  "work_stress_mentioned": true,
+  "processed_at": "2025-07-30T21:30:12.430325"
+}

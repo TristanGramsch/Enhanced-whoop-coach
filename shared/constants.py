@@ -210,3 +210,32 @@ FILE_FORMATS = {
     "model_format": "joblib",
     "report_format": "json"
 }
+
+# Journal analysis keywords and patterns
+BEHAVIORAL_KEYWORDS = {
+    "exercise": ["exercise", "workout", "run", "gym", "training", "cardio", "fitness", "sport"],
+    "alcohol": ["alcohol", "drink", "beer", "wine", "cocktail", "drinking", "drunk"],
+    "caffeine": ["coffee", "caffeine", "espresso", "tea", "energy drink"],
+    "work_stress": ["work", "job", "meeting", "deadline", "office", "boss", "project"],
+    "travel": ["travel", "trip", "flight", "vacation", "hotel", "journey"]
+}
+
+HEALTH_KEYWORDS = {
+    "sleep_quality": ["sleep", "rest", "bed", "tired", "exhausted", "insomnia"],
+    "energy_levels": ["energy", "energetic", "fatigue", "tired", "alert", "drowsy"],
+    "mood": ["happy", "sad", "angry", "frustrated", "excited", "calm", "stressed"],
+    "pain": ["pain", "ache", "sore", "hurt", "headache", "migraine"]
+}
+
+STRESS_KEYWORDS = [
+    "stress", "stressed", "anxiety", "anxious", "overwhelmed", "pressure",
+    "tense", "worried", "nervous", "panic", "burnout"
+]
+
+JOURNAL_KEYWORDS = {
+    "stress": ["stress", "stressed", "anxiety", "anxious", "overwhelmed", "pressure"],
+    "sleep": ["sleep", "tired", "fatigue", "exhausted", "rest", "insomnia"],
+    "exercise": ["workout", "exercise", "gym", "run", "training", "cardio"],
+    "nutrition": ["food", "eat", "diet", "nutrition", "meal", "hungry"],
+    "mood": ["happy", "sad", "angry", "frustrated", "excited", "calm"]
+}

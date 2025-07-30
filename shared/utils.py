@@ -6,11 +6,19 @@ Common functions for data processing, validation, and formatting.
 import json
 import logging
 import os
-import pandas as pd
-import numpy as np
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Union, Any
+
+# Optional imports with fallbacks
+try:
+    import pandas as pd
+    import numpy as np
+    PANDAS_AVAILABLE = True
+except ImportError:
+    PANDAS_AVAILABLE = False
+    pd = None
+    np = None
 from .constants import (
     DATA_QUALITY_THRESHOLDS, LOGGING_CONFIG, HRV_THRESHOLDS,
     RECOVERY_THRESHOLDS, STRAIN_THRESHOLDS, SPORT_MAPPINGS
@@ -127,38 +135,96 @@ def get_sport_name(sport_id: int) -> str:
     """Get sport name from sport ID"""
     return SPORT_MAPPINGS.get(sport_id, "Unknown")
 
-def calculate_rolling_metrics(data: pd.Series, window: int) -> Dict[str, float]:
+def calculate_rolling_metrics(data, window: int) -> Dict[str, float]:
     """Calculate rolling statistics for a time series"""
-    if len(data) < window:
-        return {"mean": np.nan, "std": np.nan, "min": np.nan, "max": np.nan}
-    
-    rolling = data.rolling(window=window, min_periods=1)
-    
-    return {
-        "mean": rolling.mean().iloc[-1],
-        "std": rolling.std().iloc[-1],
-        "min": rolling.min().iloc[-1],
-        "max": rolling.max().iloc[-1]
-    }
-
-def calculate_trend(data: pd.Series, window: int = 7) -> str:
-    """Calculate trend direction over a window"""
-    if len(data) < window:
-        return "insufficient_data"
-    
-    recent_data = data.tail(window)
-    
-    # Simple linear trend
-    x = np.arange(len(recent_data))
-    coeffs = np.polyfit(x, recent_data, 1)
-    slope = coeffs[0]
-    
-    if slope > 0.1:
-        return "increasing"
-    elif slope < -0.1:
-        return "decreasing"
+    if PANDAS_AVAILABLE and hasattr(data, 'rolling'):
+        # Use pandas Series method
+        if len(data) < window:
+            return {"mean": float('nan'), "std": float('nan'), "min": float('nan'), "max": float('nan')}
+        
+        rolling = data.rolling(window=window, min_periods=1)
+        
+        return {
+            "mean": rolling.mean().iloc[-1],
+            "std": rolling.std().iloc[-1],
+            "min": rolling.min().iloc[-1],
+            "max": rolling.max().iloc[-1]
+        }
     else:
-        return "stable"
+        # Use built-in statistics for list/array
+        if isinstance(data, (list, tuple)):
+            data_list = list(data)
+        else:
+            data_list = [data]
+        
+        if len(data_list) < window:
+            return {"mean": float('nan'), "std": float('nan'), "min": float('nan'), "max": float('nan')}
+        
+        # Use last 'window' elements
+        recent_data = data_list[-window:]
+        
+        import statistics
+        return {
+            "mean": statistics.mean(recent_data),
+            "std": statistics.stdev(recent_data) if len(recent_data) > 1 else 0.0,
+            "min": min(recent_data),
+            "max": max(recent_data)
+        }
+
+def calculate_trend(data, window: int = 7) -> str:
+    """Calculate trend direction over a window"""
+    if PANDAS_AVAILABLE and hasattr(data, 'tail') and np is not None:
+        # Use pandas Series method
+        if len(data) < window:
+            return "insufficient_data"
+        
+        recent_data = data.tail(window)
+        
+        # Simple linear trend
+        x = np.arange(len(recent_data))
+        coeffs = np.polyfit(x, recent_data, 1)
+        slope = coeffs[0]
+        
+        if slope > 0.1:
+            return "increasing"
+        elif slope < -0.1:
+            return "decreasing"
+        else:
+            return "stable"
+    else:
+        # Use built-in methods for list/array
+        if isinstance(data, (list, tuple)):
+            data_list = list(data)
+        else:
+            data_list = [data]
+        
+        if len(data_list) < window:
+            return "insufficient_data"
+        
+        # Use last 'window' elements
+        recent_data = data_list[-window:]
+        
+        # Simple linear trend (slope calculation)
+        if len(recent_data) < 2:
+            return "stable"
+        
+        # Calculate simple slope
+        x_values = list(range(len(recent_data)))
+        n = len(recent_data)
+        sum_x = sum(x_values)
+        sum_y = sum(recent_data)
+        sum_xy = sum(x * y for x, y in zip(x_values, recent_data))
+        sum_x_squared = sum(x * x for x in x_values)
+        
+        # Linear regression slope formula
+        slope = (n * sum_xy - sum_x * sum_y) / (n * sum_x_squared - sum_x * sum_x)
+        
+        if slope > 0.1:
+            return "increasing"
+        elif slope < -0.1:
+            return "decreasing"
+        else:
+            return "stable"
 
 def milliseconds_to_hours(milliseconds: int) -> float:
     """Convert milliseconds to hours"""
@@ -200,7 +266,7 @@ def clean_whoop_data(data: Dict) -> Dict:
     return cleaned
 
 def merge_daily_data(cycles: List[Dict], recoveries: List[Dict], 
-                    sleep_data: List[Dict], workouts: List[Dict]) -> pd.DataFrame:
+                    sleep_data: List[Dict], workouts: List[Dict]):
     """Merge all WHOOP data types into daily summary"""
     
     # Create daily records
@@ -286,7 +352,10 @@ def merge_daily_data(cycles: List[Dict], recoveries: List[Dict],
         
         daily_data.append(daily_record)
     
-    return pd.DataFrame(daily_data)
+    if PANDAS_AVAILABLE:
+        return pd.DataFrame(daily_data)
+    else:
+        return daily_data
 
 def save_json(data: Any, filepath: Path) -> None:
     """Save data as JSON file"""
@@ -305,14 +374,34 @@ def ensure_directories(*dirs: Path) -> None:
     for directory in dirs:
         directory.mkdir(parents=True, exist_ok=True)
 
-def get_missing_data_report(df: pd.DataFrame) -> Dict[str, float]:
-    """Generate missing data report for DataFrame"""
-    total_rows = len(df)
-    missing_report = {}
-    
-    for column in df.columns:
-        missing_count = df[column].isnull().sum()
-        missing_percentage = (missing_count / total_rows) * 100
-        missing_report[column] = missing_percentage
-    
-    return missing_report
+def get_missing_data_report(df) -> Dict[str, float]:
+    """Generate missing data report for DataFrame or list of dicts"""
+    if PANDAS_AVAILABLE and hasattr(df, 'columns'):
+        # Use pandas DataFrame method
+        total_rows = len(df)
+        missing_report = {}
+        
+        for column in df.columns:
+            missing_count = df[column].isnull().sum()
+            missing_percentage = (missing_count / total_rows) * 100
+            missing_report[column] = missing_percentage
+        
+        return missing_report
+    else:
+        # Use list of dicts method
+        if not isinstance(df, list) or not df:
+            return {}
+        
+        total_rows = len(df)
+        all_keys = set()
+        for record in df:
+            if isinstance(record, dict):
+                all_keys.update(record.keys())
+        
+        missing_report = {}
+        for key in all_keys:
+            missing_count = sum(1 for record in df if record.get(key) is None)
+            missing_percentage = (missing_count / total_rows) * 100
+            missing_report[key] = missing_percentage
+        
+        return missing_report
