@@ -1,0 +1,88 @@
+import sys
+import os
+from pathlib import Path
+from datetime import datetime
+
+# Ensure module paths are available inside the container
+REPO_ROOT = Path(__file__).resolve().parents[1]
+MODULE_DIRS = [
+    REPO_ROOT / "model_training",
+    REPO_ROOT / "data_intelligence",
+    REPO_ROOT / "llm_agent",
+    REPO_ROOT / "shared",
+]
+for module_dir in MODULE_DIRS:
+    sys.path.append(str(module_dir))
+
+from train import run_training_pipeline  # type: ignore
+from analyze import run_intelligence  # type: ignore
+from agent import run_agent  # type: ignore
+
+# Journal processing
+sys.path.append(str(REPO_ROOT / "journal_analysis"))
+from process_journal import run_journal_processing  # type: ignore
+
+
+def ensure_directories():
+    shared_dir = REPO_ROOT / "shared"
+    outputs_dir = shared_dir / "outputs"
+    models_dir = shared_dir / "models"
+    outputs_dir.mkdir(parents=True, exist_ok=True)
+    models_dir.mkdir(parents=True, exist_ok=True)
+
+
+def main():
+    ensure_directories()
+    run_id = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    print(f"[orchestrator] Starting pipeline run {run_id}")
+
+    # Stage 0: Journal processing
+    print("[orchestrator] Stage 0: journal_analysis")
+    journal_artifacts = run_journal_processing(
+        outputs_dir=str(REPO_ROOT / "shared" / "outputs")
+    )
+
+    # Stage 1: Model training and predictions
+    print("[orchestrator] Stage 1: model_training")
+    train_artifacts = run_training_pipeline(
+        data_dir=str(REPO_ROOT / "data"),
+        models_dir=str(REPO_ROOT / "shared" / "models"),
+        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+    )
+
+    # Stage 2: Data intelligence summaries
+    print("[orchestrator] Stage 2: data_intelligence")
+    intelligence_artifacts = run_intelligence(
+        data_dir=str(REPO_ROOT / "data"),
+        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        training_metrics=train_artifacts.get("metrics", {}),
+    )
+
+    # Stage 3: LLM agent forecast report
+    print("[orchestrator] Stage 3: llm_agent")
+    agent_artifacts = run_agent(
+        outputs_dir=str(REPO_ROOT / "shared" / "outputs")
+    )
+
+    # Write simple run log
+    run_log_path = REPO_ROOT / "shared" / "outputs" / "last_run.json"
+    with open(run_log_path, "w") as f:
+        import json
+        json.dump(
+            {
+                "run_id": run_id,
+                "journal_artifacts": journal_artifacts,
+                "train_artifacts": train_artifacts,
+                "intelligence_artifacts": intelligence_artifacts,
+                "agent_artifacts": agent_artifacts,
+                "timestamp": datetime.utcnow().isoformat(),
+            },
+            f,
+            indent=2,
+        )
+
+    print("[orchestrator] Pipeline completed successfully.")
+
+
+if __name__ == "__main__":
+    main()

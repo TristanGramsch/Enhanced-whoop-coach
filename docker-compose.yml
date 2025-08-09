@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  orchestrator:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile
+    container_name: hrv_orchestrator
+    command: python -u run_pipeline.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./data:/app/data:ro
+      - ./shared:/app/shared
+      - ./model_training:/app/model_training:ro
+      - ./data_intelligence:/app/data_intelligence:ro
+      - ./llm_agent:/app/llm_agent:ro
+    restart: on-failure
+
+  dashboard:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hrv_dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - orchestrator
+    volumes:
+      - ./data:/app/data:ro
+      - ./shared:/app/shared
+    restart: unless-stopped
+
+  # Optional: WHOOP API server (uses local data if token not present)
+  whoop_api:
+    build:
+      context: ./whoop_api_client
+      dockerfile: Dockerfile
+    container_name: whoop_api
+    environment:
+      - WHOOP_CLIENT_ID=${WHOOP_CLIENT_ID}
+      - WHOOP_CLIENT_SECRET=${WHOOP_CLIENT_SECRET}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./whoop_api_client/token.json:/app/whoop_api_client/token.json
+    restart: unless-stopped
