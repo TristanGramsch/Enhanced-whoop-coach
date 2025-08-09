@@ -3,15 +3,15 @@ FROM python:3.11
 WORKDIR /app
 
 # Install requirements
-COPY dagster_app/requirements.txt /app/dagster_app/requirements.txt
+COPY orchestrator/dagster_app/requirements.txt /app/dagster_app/requirements.txt
 RUN pip install --no-cache-dir -r /app/dagster_app/requirements.txt
 
 # Copy code
-COPY dagster_app /app/dagster_app
-COPY ../model_training /app/model_training
-COPY ../data_intelligence /app/data_intelligence
-COPY ../llm_agent /app/llm_agent
-COPY ../journal_analysis /app/journal_analysis
+COPY orchestrator/dagster_app /app/dagster_app
+COPY model_training /app/model_training
+COPY data_intelligence /app/data_intelligence
+COPY llm_agent /app/llm_agent
+COPY journal_analysis /app/journal_analysis
 
 # Default workdir
 WORKDIR /app/dagster_app

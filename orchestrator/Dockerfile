@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Copy orchestrator requirements and install
 COPY requirements.txt /app/orchestrator/requirements.txt
-RUN pip install --no-cache-dir -r /app/orchestrator/requirements.txt
+RUN pip install --no-cache-dir -r /app/orchestrator/requirements.txt mlflow==2.16.0
 
 # Copy orchestrator code
 COPY run_pipeline.py /app/orchestrator/run_pipeline.py
