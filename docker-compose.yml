@@ -9,12 +9,16 @@ services:
     command: python -u run_pipeline.py
     environment:
       - PYTHONUNBUFFERED=1
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
     volumes:
       - ./data:/app/data:ro
       - ./shared:/app/shared
       - ./model_training:/app/model_training:ro
       - ./data_intelligence:/app/data_intelligence:ro
       - ./llm_agent:/app/llm_agent:ro
+      - ./journal_analysis:/app/journal_analysis:ro
+    depends_on:
+      - mlflow
     restart: on-failure
 
   dashboard:
@@ -33,7 +37,6 @@ services:
       - ./shared:/app/shared
     restart: unless-stopped
 
-  # Optional: WHOOP API server (uses local data if token not present)
   whoop_api:
     build:
       context: ./whoop_api_client
@@ -47,4 +50,35 @@ services:
     volumes:
       - ./data:/app/data
       - ./whoop_api_client/token.json:/app/whoop_api_client/token.json
+    restart: unless-stopped
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.16.0
+    container_name: mlflow
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./shared/mlflow:/mlflow
+    restart: unless-stopped
+
+  dagster_webserver:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile.dagster
+    container_name: dagster_webserver
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data:ro
+      - ./shared:/app/shared
+      - ./model_training:/app/model_training:ro
+      - ./data_intelligence:/app/data_intelligence:ro
+      - ./llm_agent:/app/llm_agent:ro
+      - ./journal_analysis:/app/journal_analysis:ro
+      - ./orchestrator/dagster_app:/app/dagster_app
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
     restart: unless-stopped

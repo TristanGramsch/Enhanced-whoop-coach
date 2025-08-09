@@ -8,6 +8,13 @@ from datetime import datetime, timedelta
 import math
 import numpy as np
 
+# Optional MLflow
+try:
+    import mlflow  # type: ignore
+    MLFLOW_AVAILABLE = True
+except Exception:
+    MLFLOW_AVAILABLE = False
+
 
 def parse_date(date_str: str) -> datetime:
     return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
@@ -128,6 +135,13 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
     daily = load_hrv_series(data_dir)
     X, y = build_features(daily)
 
+    use_mlflow = MLFLOW_AVAILABLE and bool(os.environ.get("MLFLOW_TRACKING_URI"))
+    run_ctx = None
+    if use_mlflow:
+        mlflow.set_experiment("hrv_mvp")
+        run_ctx = mlflow.start_run(run_name="ridge_closed_form")
+        mlflow.log_param("feature_max_lag", 7)
+
     if len(y) < 10:
         # Fallback to last observed value forecasting
         last_date, last_val = daily[-1]
@@ -152,6 +166,13 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
         metrics_path = Path(outputs_dir) / "training_metrics.json"
         with open(metrics_path, "w") as f:
             json.dump(metrics, f, indent=2)
+
+        if use_mlflow:
+            mlflow.log_params({"model": "naive_last"})
+            mlflow.log_metrics({k: v for k, v in metrics.items() if isinstance(v, (int, float))})
+            mlflow.log_artifact(str(predictions_path))
+            mlflow.log_artifact(str(metrics_path))
+            mlflow.end_run()
 
         return {
             "model_path": str(model_path),
@@ -194,6 +215,14 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
     metrics_path = Path(outputs_dir) / "training_metrics.json"
     with open(metrics_path, "w") as f:
         json.dump(metrics, f, indent=2)
+
+    if use_mlflow:
+        mlflow.log_params({"model": "ridge_closed_form", "alpha": 1.0})
+        mlflow.log_metrics(metrics)
+        mlflow.log_artifact(str(model_path))
+        mlflow.log_artifact(str(predictions_path))
+        mlflow.log_artifact(str(metrics_path))
+        mlflow.end_run()
 
     return {
         "model_path": str(model_path),
