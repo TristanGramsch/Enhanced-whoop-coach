@@ -2,33 +2,34 @@
   "next_7_day_forecast": [
     {
       "date": "2025-07-31",
-      "predicted_hrv": 126.273050658566
+      "predicted_hrv": 126.27305061421097
     },
     {
       "date": "2025-08-01",
-      "predicted_hrv": 118.57972406568574
+      "predicted_hrv": 118.57972401018579
     },
     {
       "date": "2025-08-02",
-      "predicted_hrv": 120.19309860796777
+      "predicted_hrv": 120.19309854492941
     },
     {
       "date": "2025-08-03",
-      "predicted_hrv": 122.983593178704
+      "predicted_hrv": 122.9835931092567
     },
     {
       "date": "2025-08-04",
-      "predicted_hrv": 118.18567251887349
+      "predicted_hrv": 118.18567244001868
     },
     {
       "date": "2025-08-05",
-      "predicted_hrv": 110.00796759956197
+      "predicted_hrv": 110.00796751414855
     },
     {
       "date": "2025-08-06",
-      "predicted_hrv": 117.97430423265021
+      "predicted_hrv": 117.97430414190929
     }
   ],
   "last_observed_date": "2025-07-30",
-  "last_observed_hrv": 136.50978
+  "last_observed_hrv": 136.50978,
+  "selected_model": "ridge_closed_form"
 }

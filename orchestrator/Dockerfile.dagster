@@ -2,16 +2,12 @@ FROM python:3.11
 
 WORKDIR /app
 
-# Install requirements
-COPY orchestrator/dagster_app/requirements.txt /app/dagster_app/requirements.txt
+# Install requirements (relative to the orchestrator build context)
+COPY dagster_app/requirements.txt /app/dagster_app/requirements.txt
 RUN pip install --no-cache-dir -r /app/dagster_app/requirements.txt
 
-# Copy code
-COPY orchestrator/dagster_app /app/dagster_app
-COPY model_training /app/model_training
-COPY data_intelligence /app/data_intelligence
-COPY llm_agent /app/llm_agent
-COPY journal_analysis /app/journal_analysis
+# Code directories are mounted as volumes at runtime via docker-compose
+# so we don't COPY them during build.
 
 # Default workdir
 WORKDIR /app/dagster_app

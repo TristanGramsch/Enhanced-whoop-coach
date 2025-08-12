@@ -1,24 +1,27 @@
 {
-  "run_id": "20250809T215943Z",
+  "run_id": "20250812T045402Z",
   "journal_artifacts": {
-    "journal_features_path": "/workspace/shared/outputs/journal_features.json"
+    "journal_features_path": "/app/shared/outputs/journal_features.json"
   },
   "train_artifacts": {
-    "model_path": "/workspace/shared/models/hrv_ridge_weights.json",
-    "predictions_path": "/workspace/shared/outputs/model_predictions.json",
+    "model_path": "/app/shared/models/hrv_ridge_weights.json",
+    "predictions_path": "/app/shared/outputs/model_predictions.json",
     "metrics": {
-      "mae": 14.96957173074021,
-      "rmse": 18.029682539927194,
+      "selected_model": "ridge_closed_form",
+      "ridge_rmse": 18.02968254611617,
+      "ridge_mae": 14.969571739228224,
+      "ma3_rmse": 19.82096331057645,
+      "ma3_mae": 16.070784806916425,
       "n_train": 274,
       "n_test": 69
     }
   },
   "intelligence_artifacts": {
-    "summary_path": "/workspace/shared/outputs/intelligence_summary.json",
+    "summary_path": "/app/shared/outputs/intelligence_summary.json",
     "n_history_days": 350
   },
   "agent_artifacts": {
-    "agent_output_path": "/workspace/shared/outputs/agent_forecast.json"
+    "agent_output_path": "/app/shared/outputs/agent_forecast.json"
   },
-  "timestamp": "2025-08-09T21:59:43.134517"
+  "timestamp": "2025-08-12T04:54:08.225764"
 }

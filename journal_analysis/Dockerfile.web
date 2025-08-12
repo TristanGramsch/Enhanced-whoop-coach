@@ -1,0 +1,22 @@
+FROM python:3.11
+
+WORKDIR /app
+
+# System deps for audio
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install minimal deps
+RUN pip install --no-cache-dir fastapi==0.104.1 uvicorn[standard]==0.24.0 faster-whisper==1.0.3
+
+# Copy code
+COPY process_journal.py /app/journal_analysis/process_journal.py
+COPY transcribe.py /app/journal_analysis/transcribe.py
+COPY web_app.py /app/journal_analysis/web_app.py
+
+# Mount shared and module at runtime via volumes
+WORKDIR /app/journal_analysis
+EXPOSE 8080
+ENV WHISPER_MODEL=tiny
+CMD ["uvicorn", "web_app:app", "--host", "0.0.0.0", "--port", "8080"] 

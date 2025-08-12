@@ -1,5 +1,5 @@
 {
-  "next_day_hrv": 126.273050658566,
-  "seven_day_avg_hrv": 119.17105869457274,
-  "explanation": "30-day average HRV is 124.9 ms with increasing trend (slope=0.274). Short-term volatility is 12.7 ms. Model RMSE on holdout is 18.0 ms, indicating expected prediction error magnitude. Predicted HRV for tomorrow is 126.3 ms."
+  "next_day_hrv": 126.27305061421097,
+  "seven_day_avg_hrv": 119.17105862495134,
+  "explanation": "30-day average HRV is 124.9 ms with increasing trend (slope=0.274). Short-term volatility is 12.7 ms. Predicted HRV for tomorrow is 126.3 ms."
 }

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Dict, Any, List, Tuple
 from datetime import datetime, timedelta
 
+import os
 import math
 import numpy as np
 
@@ -128,6 +129,20 @@ def forecast_next_days(daily: List[Tuple[datetime, float]], w: np.ndarray, horiz
     return forecasts
 
 
+def moving_average_baseline(daily: List[Tuple[datetime, float]], window: int = 3) -> Dict[str, Any]:
+    values = np.array([v for _, v in daily], dtype=float)
+    preds = []
+    trues = []
+    for idx in range(window, len(values)):
+        preds.append(float(np.mean(values[idx - window:idx])))
+        trues.append(float(values[idx]))
+    if not trues:
+        return {"rmse": float("inf"), "mae": float("inf"), "n_train": 0, "n_test": 0}
+    metrics = compute_metrics(np.array(trues), np.array(preds))
+    metrics.update({"n_train": int(max(0, len(values) - len(trues))), "n_test": int(len(trues))})
+    return metrics
+
+
 def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> Dict[str, Any]:
     Path(models_dir).mkdir(parents=True, exist_ok=True)
     Path(outputs_dir).mkdir(parents=True, exist_ok=True)
@@ -139,7 +154,7 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
     run_ctx = None
     if use_mlflow:
         mlflow.set_experiment("hrv_mvp")
-        run_ctx = mlflow.start_run(run_name="ridge_closed_form")
+        run_ctx = mlflow.start_run(run_name="ridge_and_ma")
         mlflow.log_param("feature_max_lag", 7)
 
     if len(y) < 10:
@@ -157,6 +172,7 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
                 "next_7_day_forecast": fcst,
                 "last_observed_date": daily[-1][0].date().isoformat(),
                 "last_observed_hrv": float(daily[-1][1]),
+                "selected_model": "naive_last",
             }, f, indent=2)
 
         model_path = Path(models_dir) / "naive_model.json"
@@ -185,40 +201,76 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
     X_train, X_test = X[:split], X[split:]
     y_train, y_test = y[:split], y[split:]
 
+    # Model A: Ridge
     w = fit_ridge_closed_form(X_train, y_train, alpha=1.0)
-
     if len(y_test) > 0:
         y_pred = predict_with_weights(X_test, w)
-        metrics = compute_metrics(y_test, y_pred)
-        metrics.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+        ridge_metrics = compute_metrics(y_test, y_pred)
+        ridge_metrics.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
     else:
         y_pred = predict_with_weights(X_train, w)
-        metrics = compute_metrics(y_train, y_pred)
-        metrics.update({"n_train": int(len(y_train)), "n_test": 0, "note": "no holdout"})
+        ridge_metrics = compute_metrics(y_train, y_pred)
+        ridge_metrics.update({"n_train": int(len(y_train)), "n_test": 0, "note": "no holdout"})
 
-    # Save weights
-    model_path = Path(models_dir) / "hrv_ridge_weights.json"
-    with open(model_path, "w") as f:
-        json.dump({"weights": w.tolist()}, f)
+    # Model B: Moving average baseline (uses only history)
+    ma_metrics = moving_average_baseline(daily, window=3)
 
-    # Forecast next 7 days
-    fcst = forecast_next_days(daily, w, horizon=7)
+    # Select best by RMSE
+    best_name = "ridge_closed_form" if ridge_metrics.get("rmse", float("inf")) <= ma_metrics.get("rmse", float("inf")) else "moving_average_3"
 
+    # Save model artifact(s)
+    if best_name == "ridge_closed_form":
+        model_path = Path(models_dir) / "hrv_ridge_weights.json"
+        with open(model_path, "w") as f:
+            json.dump({"weights": w.tolist(), "type": "ridge_closed_form"}, f)
+        # Forecast next 7 days using ridge
+        fcst = forecast_next_days(daily, w, horizon=7)
+    else:
+        model_path = Path(models_dir) / "ma3_model.json"
+        with open(model_path, "w") as f:
+            json.dump({"type": "moving_average_3"}, f)
+        # MA forecast: repeat last ma3 for 7 days
+        last_ma3 = float(np.mean([v for _, v in daily][-3:])) if len(daily) >= 3 else float(daily[-1][1])
+        fcst = []
+        last_date = daily[-1][0]
+        for step in range(1, 8):
+            future_dt = last_date + timedelta(days=step)
+            fcst.append({"date": future_dt.date().isoformat(), "predicted_hrv": last_ma3})
+
+    # Persist predictions
     predictions_path = Path(outputs_dir) / "model_predictions.json"
     with open(predictions_path, "w") as f:
         json.dump({
             "next_7_day_forecast": fcst,
             "last_observed_date": daily[-1][0].date().isoformat(),
             "last_observed_hrv": float(daily[-1][1]),
+            "selected_model": best_name,
         }, f, indent=2)
+
+    # Compose combined metrics
+    metrics = {
+        "selected_model": best_name,
+        "ridge_rmse": ridge_metrics.get("rmse"),
+        "ridge_mae": ridge_metrics.get("mae"),
+        "ma3_rmse": ma_metrics.get("rmse"),
+        "ma3_mae": ma_metrics.get("mae"),
+        "n_train": ridge_metrics.get("n_train", 0),
+        "n_test": ridge_metrics.get("n_test", 0),
+    }
 
     metrics_path = Path(outputs_dir) / "training_metrics.json"
     with open(metrics_path, "w") as f:
         json.dump(metrics, f, indent=2)
 
     if use_mlflow:
-        mlflow.log_params({"model": "ridge_closed_form", "alpha": 1.0})
-        mlflow.log_metrics(metrics)
+        mlflow.log_params({"candidate_models": "ridge_closed_form,moving_average_3", "alpha": 1.0})
+        # Log both candidates
+        mlflow.log_metrics({
+            "ridge_rmse": metrics["ridge_rmse"],
+            "ridge_mae": metrics["ridge_mae"],
+            "ma3_rmse": metrics["ma3_rmse"],
+            "ma3_mae": metrics["ma3_mae"],
+        })
         mlflow.log_artifact(str(model_path))
         mlflow.log_artifact(str(predictions_path))
         mlflow.log_artifact(str(metrics_path))

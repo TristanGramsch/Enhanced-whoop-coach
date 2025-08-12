@@ -1,0 +1,15 @@
+FROM python:3.11
+
+WORKDIR /app
+
+# Install deps
+RUN pip install --no-cache-dir fastapi==0.104.1 uvicorn[standard]==0.24.0 numpy>=2.0.0
+
+# Copy code
+COPY analyze.py /app/data_intelligence/analyze.py
+COPY api.py /app/data_intelligence/api.py
+
+# Volumes mounted at runtime
+WORKDIR /app/data_intelligence
+EXPOSE 7000
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "7000"] 
