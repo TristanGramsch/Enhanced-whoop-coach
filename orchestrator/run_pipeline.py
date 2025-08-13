@@ -26,38 +26,40 @@ from process_journal import run_journal_processing  # type: ignore
 from prediction_tracking import append_next_day_prediction, reconcile_with_actuals  # type: ignore
 
 
-def ensure_directories():
-    shared_dir = REPO_ROOT / "shared"
-    outputs_dir = shared_dir / "outputs"
-    models_dir = shared_dir / "models"
+def ensure_directories(outputs_dir: Path, models_dir: Path):
     outputs_dir.mkdir(parents=True, exist_ok=True)
     models_dir.mkdir(parents=True, exist_ok=True)
 
 
 def main():
-    ensure_directories()
+    outputs_dir_env = os.environ.get("OUTPUTS_DIR")
+    shared_dir = REPO_ROOT / "shared"
+    outputs_dir = Path(outputs_dir_env) if outputs_dir_env else (shared_dir / "outputs")
+    models_dir = shared_dir / "models"
+    ensure_directories(outputs_dir, models_dir)
+
     run_id = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     print(f"[orchestrator] Starting pipeline run {run_id}")
 
     # Stage 0: Journal processing
     print("[orchestrator] Stage 0: journal_analysis")
     journal_artifacts = run_journal_processing(
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs")
+        outputs_dir=str(outputs_dir)
     )
 
     # Stage 1: Model training and predictions
     print("[orchestrator] Stage 1: model_training")
     train_artifacts = run_training_pipeline(
         data_dir=str(REPO_ROOT / "data"),
-        models_dir=str(REPO_ROOT / "shared" / "models"),
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        models_dir=str(models_dir),
+        outputs_dir=str(outputs_dir),
     )
 
     # Record the next-day prediction for tracking
     pred_path = train_artifacts.get("predictions_path")
     if pred_path:
         rec = append_next_day_prediction(
-            outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+            outputs_dir=str(outputs_dir),
             predictions_path=pred_path,
         )
         if rec:
@@ -69,27 +71,27 @@ def main():
     print("[orchestrator] Stage 2: data_intelligence")
     intelligence_artifacts = run_intelligence(
         data_dir=str(REPO_ROOT / "data"),
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        outputs_dir=str(outputs_dir),
         training_metrics=train_artifacts.get("metrics", {}),
     )
 
     # Stage 3: LLM agent forecast report
     print("[orchestrator] Stage 3: llm_agent")
     agent_artifacts = run_agent(
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs")
+        outputs_dir=str(outputs_dir)
     )
 
     # Reconcile predictions with actuals if available
     recon = reconcile_with_actuals(
         data_dir=str(REPO_ROOT / "data"),
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        outputs_dir=str(outputs_dir),
     )
     print(
         f"[orchestrator] Reconcile: updated={recon.get('updated',0)} evaluated={recon.get('n_evaluated',0)} RMSE={recon.get('rmse','NA')}"
     )
 
     # Write simple run log
-    run_log_path = REPO_ROOT / "shared" / "outputs" / "last_run.json"
+    run_log_path = outputs_dir / "last_run.json"
     with open(run_log_path, "w") as f:
         import json
         json.dump(

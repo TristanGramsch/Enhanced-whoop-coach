@@ -285,9 +285,10 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
 
 if __name__ == "__main__":
     repo_root = Path(__file__).resolve().parents[1]
+    outputs_dir = os.environ.get("OUTPUTS_DIR", str(repo_root / "shared" / "outputs"))
     artifacts = run_training_pipeline(
         data_dir=str(repo_root / "data"),
         models_dir=str(repo_root / "shared" / "models"),
-        outputs_dir=str(repo_root / "shared" / "outputs"),
+        outputs_dir=outputs_dir,
     )
     print(json.dumps(artifacts, indent=2))

@@ -21,10 +21,12 @@ from train import run_training_pipeline  # type: ignore
 from analyze import run_intelligence  # type: ignore
 from agent import run_agent  # type: ignore
 
+OUTPUTS_DIR = os.environ.get("OUTPUTS_DIR", str(REPO_ROOT / "shared" / "outputs"))
+
 
 @op
 def journal_op():
-    return run_journal_processing(outputs_dir=str(REPO_ROOT / "shared" / "outputs"))
+    return run_journal_processing(outputs_dir=str(OUTPUTS_DIR))
 
 
 @op
@@ -32,7 +34,7 @@ def training_op():
     return run_training_pipeline(
         data_dir=str(REPO_ROOT / "data"),
         models_dir=str(REPO_ROOT / "shared" / "models"),
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        outputs_dir=str(OUTPUTS_DIR),
     )
 
 
@@ -40,14 +42,14 @@ def training_op():
 def intelligence_op(train_artifacts):
     return run_intelligence(
         data_dir=str(REPO_ROOT / "data"),
-        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+        outputs_dir=str(OUTPUTS_DIR),
         training_metrics=train_artifacts.get("metrics", {}),
     )
 
 
 @op
 def agent_op():
-    return run_agent(outputs_dir=str(REPO_ROOT / "shared" / "outputs"))
+    return run_agent(outputs_dir=str(OUTPUTS_DIR))
 
 
 @job

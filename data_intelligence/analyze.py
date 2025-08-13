@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Dict, Any, List, Tuple
 from datetime import datetime
+import os
 
 import numpy as np
 
@@ -99,9 +100,10 @@ def run_intelligence(data_dir: str, outputs_dir: str, training_metrics: Dict[str
 
 if __name__ == "__main__":
     repo_root = Path(__file__).resolve().parents[1]
+    outputs_dir = os.environ.get("OUTPUTS_DIR", str(repo_root / "shared" / "outputs"))
     artifacts = run_intelligence(
         data_dir=str(repo_root / "data"),
-        outputs_dir=str(repo_root / "shared" / "outputs"),
+        outputs_dir=outputs_dir,
         training_metrics={},
     )
     print(json.dumps(artifacts, indent=2))

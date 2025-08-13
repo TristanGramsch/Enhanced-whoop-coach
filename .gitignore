@@ -1,3 +1,15 @@
-__pycache__
+# Python
+__pycache__/
+*.pyc
+
+# Env and secrets
 .env
-venv
+*.env
+
+# Local editor
+.vscode/
+.idea/
+
+# Data artifacts
+shared/outputs/dev_debrief.json
+shared/uploads/

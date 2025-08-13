@@ -11,6 +11,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/shared/outputs
     volumes:
       - ./data:/app/data:ro
       - ./shared:/app/shared
@@ -32,6 +33,7 @@ services:
       - "8501:8501"
     environment:
       - PYTHONUNBUFFERED=1
+      - OUTPUTS_DIR=/app/shared/outputs
     depends_on:
       - orchestrator
     volumes:
@@ -49,6 +51,7 @@ services:
       - "8080:8080"
     environment:
       - PYTHONUNBUFFERED=1
+      - OUTPUTS_DIR=/app/shared/outputs
     volumes:
       - ./shared:/app/shared
       - ./journal_analysis:/app/journal_analysis:ro
@@ -65,6 +68,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/shared/outputs
     volumes:
       - ./data:/app/data:ro
       - ./shared:/app/shared
@@ -116,6 +120,20 @@ services:
       - ./orchestrator/dagster_app:/app/dagster_app
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/shared/outputs
     depends_on:
       - mlflow
     restart: unless-stopped
+
+  dev_agent:
+    image: python:3.11
+    container_name: dev_agent
+    working_dir: /app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OUTPUTS_DIR=/app/shared/outputs
+    volumes:
+      - ./shared:/app/shared
+      - ./dev_agent:/app/dev_agent:ro
+    command: python -u dev_agent/agent.py
+    restart: "no"
