@@ -22,6 +22,9 @@ from agent import run_agent  # type: ignore
 sys.path.append(str(REPO_ROOT / "journal_analysis"))
 from process_journal import run_journal_processing  # type: ignore
 
+# Prediction tracking
+from prediction_tracking import append_next_day_prediction, reconcile_with_actuals  # type: ignore
+
 
 def ensure_directories():
     shared_dir = REPO_ROOT / "shared"
@@ -50,6 +53,18 @@ def main():
         outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
     )
 
+    # Record the next-day prediction for tracking
+    pred_path = train_artifacts.get("predictions_path")
+    if pred_path:
+        rec = append_next_day_prediction(
+            outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+            predictions_path=pred_path,
+        )
+        if rec:
+            print(
+                f"[orchestrator] Tracked next-day prediction for {rec.forecast_for_date}: {rec.predicted_hrv:.2f} ms"
+            )
+
     # Stage 2: Data intelligence summaries
     print("[orchestrator] Stage 2: data_intelligence")
     intelligence_artifacts = run_intelligence(
@@ -64,6 +79,15 @@ def main():
         outputs_dir=str(REPO_ROOT / "shared" / "outputs")
     )
 
+    # Reconcile predictions with actuals if available
+    recon = reconcile_with_actuals(
+        data_dir=str(REPO_ROOT / "data"),
+        outputs_dir=str(REPO_ROOT / "shared" / "outputs"),
+    )
+    print(
+        f"[orchestrator] Reconcile: updated={recon.get('updated',0)} evaluated={recon.get('n_evaluated',0)} RMSE={recon.get('rmse','NA')}"
+    )
+
     # Write simple run log
     run_log_path = REPO_ROOT / "shared" / "outputs" / "last_run.json"
     with open(run_log_path, "w") as f:
@@ -75,6 +99,7 @@ def main():
                 "train_artifacts": train_artifacts,
                 "intelligence_artifacts": intelligence_artifacts,
                 "agent_artifacts": agent_artifacts,
+                "reconciliation": recon,
                 "timestamp": datetime.utcnow().isoformat(),
             },
             f,

@@ -36,6 +36,7 @@ pred_path = OUTPUTS_DIR / "model_predictions.json"
 agent_path = OUTPUTS_DIR / "agent_forecast.json"
 summary_path = OUTPUTS_DIR / "intelligence_summary.json"
 journal_path = OUTPUTS_DIR / "journal_features.json"
+registry_path = OUTPUTS_DIR / "predictions_registry.csv"
 
 preds = {"next_7_day_forecast": []}
 if pred_path.exists():
@@ -85,5 +86,30 @@ if journal:
     st.json(journal)
 else:
     st.write("No journal features yet.")
+
+# New: Prediction tracking
+st.subheader("Prediction Tracking")
+if registry_path.exists():
+    import pandas as pd
+
+    df = pd.read_csv(registry_path)
+    # Convert numeric columns
+    for c in ["predicted_hrv", "actual_hrv", "error", "abs_error"]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    recent = df.sort_values("forecast_for_date").tail(14)
+    st.dataframe(recent[[
+        "forecast_for_date", "model_name", "predicted_hrv", "actual_hrv", "error", "abs_error"
+    ]], hide_index=True)
+
+    evaluated = df[df["abs_error"].notna()]
+    if not evaluated.empty:
+        mae = float(evaluated["abs_error"].mean())
+        rmse = float(np.sqrt((evaluated["error"] ** 2).mean()))
+        st.metric("Tracking MAE", f"{mae:.2f} ms")
+        st.metric("Tracking RMSE", f"{rmse:.2f} ms")
+else:
+    st.write("No predictions tracked yet. Run the pipeline to log next-day predictions.")
 
 st.caption("Data source: WHOOP recovery HRV; MVP forecasts via ridge-style closed-form regression with lag features.")

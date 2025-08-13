@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install minimal deps
-RUN pip install --no-cache-dir fastapi==0.104.1 uvicorn[standard]==0.24.0 faster-whisper==1.0.3
+RUN pip install --no-cache-dir fastapi==0.104.1 uvicorn[standard]==0.24.0 faster-whisper==1.0.3 python-multipart==0.0.9
 
 # Copy code
 COPY process_journal.py /app/journal_analysis/process_journal.py
