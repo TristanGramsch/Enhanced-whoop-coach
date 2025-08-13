@@ -10,6 +10,10 @@ __pycache__/
 .vscode/
 .idea/
 
+# Virtual environments
+venv/
+**/venv/
+
 # Data artifacts
 shared/outputs/dev_debrief.json
 shared/uploads/
