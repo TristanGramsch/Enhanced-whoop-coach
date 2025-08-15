@@ -8,14 +8,9 @@ from dagster import job, op, Definitions
 import sys
 # repository.py is in /app/dagster_app; repo root is its parent (/app)
 REPO_ROOT = Path(__file__).resolve().parents[1]
-for p in [
-    REPO_ROOT / "journal_analysis",
-    REPO_ROOT / "model_training",
-    REPO_ROOT / "data_intelligence",
-    REPO_ROOT / "llm_agent",
-]:
-    if str(p) not in sys.path:
-        sys.path.append(str(p))
+# Ensure package imports resolve from repo root
+if str(REPO_ROOT) not in sys.path:
+    sys.path.append(str(REPO_ROOT))
 
 from journal_analysis.process_journal import run_journal_processing  # type: ignore
 from model_training.train import run_training_pipeline  # type: ignore

@@ -1,0 +1,2876 @@
+{
+  "daily": [
+    {
+      "date": "2024-08-04",
+      "hrv": 102.77162,
+      "rhr": 43.0,
+      "strain": 5.4576855,
+      "sleep_hours": 7.850428333333333,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2024-08-05",
+      "hrv": null,
+      "rhr": null,
+      "strain": 14.363959,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2024-08-06",
+      "hrv": null,
+      "rhr": null,
+      "strain": 13.980825000000001,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2024-08-08",
+      "hrv": 107.47173,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 3.3242575,
+      "disturbances": 2.0
+    },
+    {
+      "date": "2024-08-09",
+      "hrv": 105.59288799999999,
+      "rhr": 39.5,
+      "strain": 10.672216,
+      "sleep_hours": 4.934463055555556,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-08-10",
+      "hrv": 129.12677,
+      "rhr": 40.0,
+      "strain": 4.9881825,
+      "sleep_hours": 1.8823013888888889,
+      "disturbances": 2.0
+    },
+    {
+      "date": "2024-08-11",
+      "hrv": 86.248566,
+      "rhr": 45.0,
+      "strain": 12.735730766666668,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2024-08-12",
+      "hrv": 124.814766,
+      "rhr": 42.0,
+      "strain": null,
+      "sleep_hours": 9.012171666666667,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-08-13",
+      "hrv": 73.73404,
+      "rhr": 47.0,
+      "strain": 8.911937,
+      "sleep_hours": 1.2897491666666667,
+      "disturbances": 1.0
+    },
+    {
+      "date": "2024-08-14",
+      "hrv": 111.226078,
+      "rhr": 40.0,
+      "strain": 19.602142,
+      "sleep_hours": 7.506018611111111,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-08-15",
+      "hrv": 100.11353,
+      "rhr": 44.0,
+      "strain": 12.421842233333335,
+      "sleep_hours": 7.313988055555556,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-08-16",
+      "hrv": 94.900925,
+      "rhr": 42.0,
+      "strain": 8.5124235,
+      "sleep_hours": 8.5637125,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-08-17",
+      "hrv": 93.9021625,
+      "rhr": 42.5,
+      "strain": 14.383971500000001,
+      "sleep_hours": 6.560729722222222,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-08-18",
+      "hrv": 98.125435,
+      "rhr": 44.0,
+      "strain": 10.8821885,
+      "sleep_hours": 11.925391944444444,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2024-08-19",
+      "hrv": 75.29573,
+      "rhr": 45.0,
+      "strain": 8.178117,
+      "sleep_hours": 8.067046666666666,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-08-20",
+      "hrv": 72.43022,
+      "rhr": 46.0,
+      "strain": 20.583033,
+      "sleep_hours": 8.066769444444445,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-08-21",
+      "hrv": 85.89186799999999,
+      "rhr": 43.0,
+      "strain": 20.423628,
+      "sleep_hours": 8.106815277777779,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-08-22",
+      "hrv": 97.33346,
+      "rhr": 41.5,
+      "strain": 9.146765,
+      "sleep_hours": 7.033349444444444,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-08-23",
+      "hrv": 82.114285,
+      "rhr": 44.5,
+      "strain": 19.162794,
+      "sleep_hours": 8.915938333333333,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-08-24",
+      "hrv": 69.51022,
+      "rhr": 50.0,
+      "strain": 11.790820499999999,
+      "sleep_hours": 10.54028138888889,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-08-25",
+      "hrv": 105.22796,
+      "rhr": 41.0,
+      "strain": 5.9583874,
+      "sleep_hours": 8.69163611111111,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-08-26",
+      "hrv": 84.44291999999999,
+      "rhr": 42.0,
+      "strain": 9.787971,
+      "sleep_hours": 7.770308333333333,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-08-27",
+      "hrv": 71.138904,
+      "rhr": 46.0,
+      "strain": 8.210111,
+      "sleep_hours": 7.706549722222222,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-08-28",
+      "hrv": 76.894325,
+      "rhr": 45.0,
+      "strain": 14.239482500000001,
+      "sleep_hours": 9.549047222222223,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2024-08-29",
+      "hrv": 66.60683,
+      "rhr": 47.0,
+      "strain": 19.943834,
+      "sleep_hours": 9.060146388888889,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-08-30",
+      "hrv": 68.95829,
+      "rhr": 46.0,
+      "strain": 10.545223566666667,
+      "sleep_hours": 8.099076111111112,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-08-31",
+      "hrv": 62.4190635,
+      "rhr": 47.5,
+      "strain": 17.806503,
+      "sleep_hours": 12.568931666666666,
+      "disturbances": 16.0
+    },
+    {
+      "date": "2024-09-01",
+      "hrv": 88.35943,
+      "rhr": 43.0,
+      "strain": 7.764429,
+      "sleep_hours": 7.305724722222222,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-09-02",
+      "hrv": 116.82166,
+      "rhr": 39.0,
+      "strain": 14.905002,
+      "sleep_hours": 8.162920555555555,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-03",
+      "hrv": 93.64982,
+      "rhr": 44.0,
+      "strain": 13.230255,
+      "sleep_hours": 7.049386388888889,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-04",
+      "hrv": 84.404854,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 8.811790555555556,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-09-05",
+      "hrv": 87.841955,
+      "rhr": 42.5,
+      "strain": 15.468239,
+      "sleep_hours": 8.83583138888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-09-06",
+      "hrv": 92.47296,
+      "rhr": 45.0,
+      "strain": 17.549404,
+      "sleep_hours": 7.417891944444444,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-09-07",
+      "hrv": 93.59401,
+      "rhr": 43.0,
+      "strain": 13.71173,
+      "sleep_hours": 8.875884722222223,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-09-08",
+      "hrv": 129.61185,
+      "rhr": 38.0,
+      "strain": 15.311021,
+      "sleep_hours": 9.417699444444445,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-09-09",
+      "hrv": 123.13994,
+      "rhr": 42.0,
+      "strain": null,
+      "sleep_hours": 8.595766944444444,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-09-10",
+      "hrv": 123.34071,
+      "rhr": 39.0,
+      "strain": 8.752370833333332,
+      "sleep_hours": 8.419248611111112,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-11",
+      "hrv": 103.73513,
+      "rhr": 48.0,
+      "strain": 17.611769,
+      "sleep_hours": 11.839911666666668,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-09-12",
+      "hrv": 144.07547,
+      "rhr": 38.0,
+      "strain": 8.399683,
+      "sleep_hours": 7.666225833333334,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-09-13",
+      "hrv": 138.20544,
+      "rhr": 42.0,
+      "strain": 18.43413,
+      "sleep_hours": 8.828048888888889,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-14",
+      "hrv": 106.65429,
+      "rhr": 46.5,
+      "strain": 13.470871333333335,
+      "sleep_hours": 7.266755,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-09-15",
+      "hrv": 91.32526,
+      "rhr": 49.0,
+      "strain": 8.880826500000001,
+      "sleep_hours": 8.787776944444444,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-09-16",
+      "hrv": 135.46588,
+      "rhr": 38.0,
+      "strain": null,
+      "sleep_hours": 9.6540575,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-09-17",
+      "hrv": 80.62535,
+      "rhr": 47.0,
+      "strain": 16.121401,
+      "sleep_hours": 8.859858333333333,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-09-18",
+      "hrv": 116.710365,
+      "rhr": 39.0,
+      "strain": 6.2865152,
+      "sleep_hours": 9.0600475,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-09-19",
+      "hrv": 122.88376,
+      "rhr": 39.0,
+      "strain": 7.538741,
+      "sleep_hours": 7.6101366666666665,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-20",
+      "hrv": null,
+      "rhr": null,
+      "strain": 12.566878466666667,
+      "sleep_hours": 5.83198,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-09-22",
+      "hrv": null,
+      "rhr": null,
+      "strain": 5.0209335,
+      "sleep_hours": 8.242935833333334,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-09-23",
+      "hrv": null,
+      "rhr": null,
+      "strain": 6.194837,
+      "sleep_hours": 9.3485425,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-09-24",
+      "hrv": 114.02973975,
+      "rhr": 42.5,
+      "strain": 16.769484,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2024-09-25",
+      "hrv": 88.05796,
+      "rhr": 44.0,
+      "strain": 7.584888,
+      "sleep_hours": 8.315483333333333,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-09-26",
+      "hrv": 85.59335,
+      "rhr": 45.0,
+      "strain": 15.820118,
+      "sleep_hours": 8.996184166666668,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-09-27",
+      "hrv": 100.96241,
+      "rhr": 42.0,
+      "strain": 8.853912,
+      "sleep_hours": 9.04426638888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-09-28",
+      "hrv": 92.366895,
+      "rhr": 46.5,
+      "strain": 12.615788349999999,
+      "sleep_hours": 7.225735,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-09-29",
+      "hrv": 81.057304,
+      "rhr": 45.0,
+      "strain": 14.039386499999999,
+      "sleep_hours": 7.698671666666667,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-09-30",
+      "hrv": 87.55858,
+      "rhr": 46.0,
+      "strain": 8.233454,
+      "sleep_hours": 11.1524975,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2024-10-01",
+      "hrv": 75.452896,
+      "rhr": 45.0,
+      "strain": null,
+      "sleep_hours": 7.0898280555555555,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-10-02",
+      "hrv": 76.8484345,
+      "rhr": 47.5,
+      "strain": null,
+      "sleep_hours": 9.556931666666667,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-10-03",
+      "hrv": 102.423133,
+      "rhr": 43.0,
+      "strain": 19.641028,
+      "sleep_hours": 7.43399,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-10-04",
+      "hrv": 63.826794,
+      "rhr": 49.0,
+      "strain": null,
+      "sleep_hours": 9.196478055555556,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-10-05",
+      "hrv": 68.4137675,
+      "rhr": 52.5,
+      "strain": 7.7655296,
+      "sleep_hours": 5.575444166666666,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-10-06",
+      "hrv": 107.44605,
+      "rhr": 45.0,
+      "strain": 7.885408766666667,
+      "sleep_hours": 9.316652222222222,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-07",
+      "hrv": 121.489494,
+      "rhr": 41.0,
+      "strain": 17.64494,
+      "sleep_hours": 7.882904722222222,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-10-08",
+      "hrv": 117.95553,
+      "rhr": 46.0,
+      "strain": 8.823663,
+      "sleep_hours": 8.683769166666666,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-09",
+      "hrv": 127.8709,
+      "rhr": 47.0,
+      "strain": null,
+      "sleep_hours": 4.445776944444445,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-10-10",
+      "hrv": 77.97985,
+      "rhr": 49.0,
+      "strain": 10.8178855,
+      "sleep_hours": 12.27274361111111,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-10-11",
+      "hrv": 98.14584,
+      "rhr": 43.0,
+      "strain": 9.7021005,
+      "sleep_hours": 6.945617222222222,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-10-12",
+      "hrv": 76.127594,
+      "rhr": 50.0,
+      "strain": 10.674606,
+      "sleep_hours": 7.065786388888889,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-10-13",
+      "hrv": 78.7250425,
+      "rhr": 50.0,
+      "strain": 8.079955675,
+      "sleep_hours": 5.575703611111111,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-10-14",
+      "hrv": 97.86652,
+      "rhr": 44.0,
+      "strain": 12.618457,
+      "sleep_hours": 13.923210833333334,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2024-10-15",
+      "hrv": 99.996782,
+      "rhr": 50.5,
+      "strain": 8.357668666666667,
+      "sleep_hours": 4.189441666666666,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-10-16",
+      "hrv": 63.925056,
+      "rhr": 49.0,
+      "strain": 16.637737,
+      "sleep_hours": 10.277925277777777,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-10-17",
+      "hrv": 108.264725,
+      "rhr": 48.0,
+      "strain": 13.3293145,
+      "sleep_hours": 8.940118055555555,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-10-18",
+      "hrv": 111.933334,
+      "rhr": 47.0,
+      "strain": 14.556231,
+      "sleep_hours": 9.13235,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-10-19",
+      "hrv": 61.449410666666665,
+      "rhr": 54.0,
+      "strain": null,
+      "sleep_hours": 4.767197222222222,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-10-20",
+      "hrv": 92.76463,
+      "rhr": 45.0,
+      "strain": null,
+      "sleep_hours": 11.817558611111112,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-10-21",
+      "hrv": 82.93527,
+      "rhr": 46.0,
+      "strain": 16.3759205,
+      "sleep_hours": 8.908058055555555,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-10-22",
+      "hrv": 92.417076,
+      "rhr": 46.0,
+      "strain": 11.072528666666665,
+      "sleep_hours": 8.52352138888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-23",
+      "hrv": 68.638664,
+      "rhr": 48.0,
+      "strain": 8.27284,
+      "sleep_hours": 9.765480277777778,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-10-24",
+      "hrv": 77.134415,
+      "rhr": 47.0,
+      "strain": 6.950791,
+      "sleep_hours": 9.0845575,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-10-25",
+      "hrv": 76.070045,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 7.962729166666667,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-26",
+      "hrv": 84.19235,
+      "rhr": 48.0,
+      "strain": null,
+      "sleep_hours": 13.506412222222222,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-10-27",
+      "hrv": 69.33823,
+      "rhr": 49.0,
+      "strain": 13.703880999999999,
+      "sleep_hours": 9.885610277777777,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-10-28",
+      "hrv": 89.7767,
+      "rhr": 43.0,
+      "strain": 12.852684,
+      "sleep_hours": 8.900074722222222,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2024-10-29",
+      "hrv": 101.07928,
+      "rhr": 43.0,
+      "strain": 13.864814,
+      "sleep_hours": 8.973240833333334,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-30",
+      "hrv": 84.46729,
+      "rhr": 46.0,
+      "strain": 6.015828,
+      "sleep_hours": 8.595913888888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-10-31",
+      "hrv": 81.90944,
+      "rhr": 46.0,
+      "strain": 8.486106,
+      "sleep_hours": 8.81994,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-01",
+      "hrv": 70.956894,
+      "rhr": 49.0,
+      "strain": 17.648914,
+      "sleep_hours": 9.67712888888889,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-02",
+      "hrv": 93.97046,
+      "rhr": 46.0,
+      "strain": 17.34022,
+      "sleep_hours": 8.803915833333333,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-03",
+      "hrv": 76.66957,
+      "rhr": 49.0,
+      "strain": 7.853790175,
+      "sleep_hours": 4.838430555555555,
+      "disturbances": 1.0
+    },
+    {
+      "date": "2024-11-04",
+      "hrv": 118.59355,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 11.311379722222222,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-11-05",
+      "hrv": 112.63598,
+      "rhr": 44.0,
+      "strain": 16.8753,
+      "sleep_hours": 9.084281388888888,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-06",
+      "hrv": 107.06574,
+      "rhr": 43.0,
+      "strain": 12.169646,
+      "sleep_hours": 9.18871,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-11-07",
+      "hrv": 92.596664,
+      "rhr": 45.0,
+      "strain": 9.88406475,
+      "sleep_hours": 9.5331575,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-11-08",
+      "hrv": 106.34039,
+      "rhr": 43.0,
+      "strain": 7.1698227,
+      "sleep_hours": 8.49148,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-09",
+      "hrv": 100.45456,
+      "rhr": 43.0,
+      "strain": 12.054438000000001,
+      "sleep_hours": 10.238174444444445,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-10",
+      "hrv": 109.83934,
+      "rhr": 44.0,
+      "strain": 9.386841,
+      "sleep_hours": 7.409970555555556,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-11-11",
+      "hrv": 97.42919,
+      "rhr": 43.0,
+      "strain": 6.866093,
+      "sleep_hours": 9.148394444444444,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-11-12",
+      "hrv": 135.32024,
+      "rhr": 43.0,
+      "strain": 12.844041,
+      "sleep_hours": 9.941767222222222,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-11-13",
+      "hrv": 138.4181,
+      "rhr": 41.0,
+      "strain": 12.973782333333332,
+      "sleep_hours": 8.900015277777777,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-11-14",
+      "hrv": 132.43307,
+      "rhr": 43.0,
+      "strain": 11.2511195,
+      "sleep_hours": 9.412745555555556,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-11-15",
+      "hrv": 143.1295,
+      "rhr": 47.0,
+      "strain": 20.453928,
+      "sleep_hours": 10.037884444444444,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-11-16",
+      "hrv": 129.39998,
+      "rhr": 41.0,
+      "strain": 15.243739,
+      "sleep_hours": 10.742870555555555,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2024-11-17",
+      "hrv": 142.559895,
+      "rhr": 48.0,
+      "strain": 10.71416,
+      "sleep_hours": 6.512729722222222,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-18",
+      "hrv": 124.98717,
+      "rhr": 43.0,
+      "strain": 9.2340405,
+      "sleep_hours": 8.411644166666667,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-11-19",
+      "hrv": 117.223236,
+      "rhr": 47.0,
+      "strain": 13.677604833333334,
+      "sleep_hours": 9.164419444444444,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-20",
+      "hrv": 80.88716,
+      "rhr": 62.0,
+      "strain": 11.0271945,
+      "sleep_hours": 9.469083333333334,
+      "disturbances": 23.0
+    },
+    {
+      "date": "2024-11-21",
+      "hrv": 131.71292,
+      "rhr": 42.0,
+      "strain": 7.784229,
+      "sleep_hours": 8.796688333333334,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-11-22",
+      "hrv": 159.88809,
+      "rhr": 46.0,
+      "strain": 14.6261485,
+      "sleep_hours": 8.732080555555555,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-23",
+      "hrv": 132.71298,
+      "rhr": 45.0,
+      "strain": 20.291172,
+      "sleep_hours": 8.219334722222222,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-11-24",
+      "hrv": 115.6188325,
+      "rhr": 42.5,
+      "strain": 9.473380666666666,
+      "sleep_hours": 9.413295277777777,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-11-25",
+      "hrv": 129.18123,
+      "rhr": 40.0,
+      "strain": null,
+      "sleep_hours": 8.090948055555556,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-26",
+      "hrv": 113.17327,
+      "rhr": 47.0,
+      "strain": 20.423296,
+      "sleep_hours": 9.324636111111111,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-11-27",
+      "hrv": 108.03408,
+      "rhr": 48.0,
+      "strain": 13.149770666666667,
+      "sleep_hours": 9.5569475,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-11-28",
+      "hrv": null,
+      "rhr": null,
+      "strain": null,
+      "sleep_hours": 8.812205,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-11-29",
+      "hrv": 106.18125,
+      "rhr": 41.0,
+      "strain": null,
+      "sleep_hours": 9.060535833333333,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-11-30",
+      "hrv": 146.15063,
+      "rhr": 40.0,
+      "strain": 19.126161,
+      "sleep_hours": 9.364975277777777,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-12-01",
+      "hrv": 104.42804,
+      "rhr": 45.0,
+      "strain": 12.294512,
+      "sleep_hours": 8.475480833333334,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-12-02",
+      "hrv": 78.07427,
+      "rhr": 44.0,
+      "strain": 13.348218,
+      "sleep_hours": 8.731804444444444,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-12-03",
+      "hrv": 115.65924,
+      "rhr": 47.0,
+      "strain": 12.908701500000001,
+      "sleep_hours": 8.4754725,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-12-04",
+      "hrv": 97.3881,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 9.212739722222222,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-12-05",
+      "hrv": 106.363434,
+      "rhr": 46.0,
+      "strain": 13.240125333333333,
+      "sleep_hours": 8.75611,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-12-06",
+      "hrv": 115.34647,
+      "rhr": 46.0,
+      "strain": 20.334812,
+      "sleep_hours": 9.124359166666666,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-12-07",
+      "hrv": 145.96907,
+      "rhr": 45.0,
+      "strain": 12.6638795,
+      "sleep_hours": 8.835961666666666,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-12-08",
+      "hrv": 107.558464,
+      "rhr": 42.0,
+      "strain": 10.282385,
+      "sleep_hours": 7.946724166666667,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-12-09",
+      "hrv": 82.914185,
+      "rhr": 46.0,
+      "strain": 9.603589150000001,
+      "sleep_hours": 8.892013888888888,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-12-10",
+      "hrv": 104.18319,
+      "rhr": 46.0,
+      "strain": 12.019788833333331,
+      "sleep_hours": 8.531523611111112,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-12-11",
+      "hrv": 126.30145,
+      "rhr": 43.0,
+      "strain": 16.74709,
+      "sleep_hours": 9.316910555555555,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-12-12",
+      "hrv": 128.57115,
+      "rhr": 42.0,
+      "strain": 12.382463000000001,
+      "sleep_hours": 11.047024444444444,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-12-13",
+      "hrv": 109.428444,
+      "rhr": 43.0,
+      "strain": 8.41922,
+      "sleep_hours": 8.988167222222222,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-12-14",
+      "hrv": 128.24545,
+      "rhr": 41.0,
+      "strain": 17.185125333333335,
+      "sleep_hours": 10.838740277777777,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2024-12-15",
+      "hrv": 101.06586,
+      "rhr": 47.0,
+      "strain": 9.7706827,
+      "sleep_hours": 8.499493055555556,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-12-16",
+      "hrv": 113.8226975,
+      "rhr": 42.5,
+      "strain": 13.604406,
+      "sleep_hours": 5.599723333333333,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-12-17",
+      "hrv": 121.58233,
+      "rhr": 40.0,
+      "strain": 13.42960875,
+      "sleep_hours": 8.355301944444445,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-12-18",
+      "hrv": 111.64954499999999,
+      "rhr": 40.0,
+      "strain": 15.510021,
+      "sleep_hours": 9.46884,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-12-19",
+      "hrv": 98.95097,
+      "rhr": 43.0,
+      "strain": 13.854973,
+      "sleep_hours": 9.7332075,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2024-12-20",
+      "hrv": 88.38722,
+      "rhr": 44.0,
+      "strain": 8.6092738,
+      "sleep_hours": 8.988171666666666,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2024-12-21",
+      "hrv": 79.93315,
+      "rhr": 46.0,
+      "strain": 9.8968852,
+      "sleep_hours": 9.436811666666667,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2024-12-22",
+      "hrv": 87.31143,
+      "rhr": 46.0,
+      "strain": 9.484345999999999,
+      "sleep_hours": 8.587608888888889,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2024-12-23",
+      "hrv": 122.42749,
+      "rhr": 45.5,
+      "strain": 9.25560675,
+      "sleep_hours": 8.115236388888889,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2024-12-24",
+      "hrv": 98.35245,
+      "rhr": 46.0,
+      "strain": 10.175783,
+      "sleep_hours": 7.8107758333333335,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-12-25",
+      "hrv": 121.76982,
+      "rhr": 40.0,
+      "strain": 10.739799,
+      "sleep_hours": 9.076481388888888,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2024-12-26",
+      "hrv": 76.93573,
+      "rhr": 47.0,
+      "strain": 8.251517575,
+      "sleep_hours": 8.499745833333334,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2024-12-27",
+      "hrv": 79.598495,
+      "rhr": 48.0,
+      "strain": null,
+      "sleep_hours": 9.949510833333333,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2024-12-28",
+      "hrv": null,
+      "rhr": null,
+      "strain": 11.1865835,
+      "sleep_hours": 7.938656666666667,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2024-12-29",
+      "hrv": 101.0160075,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 8.075162777777777,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2024-12-30",
+      "hrv": 136.20665,
+      "rhr": 39.0,
+      "strain": 7.437071,
+      "sleep_hours": 9.100555833333333,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2024-12-31",
+      "hrv": null,
+      "rhr": null,
+      "strain": 6.2579794,
+      "sleep_hours": 9.677685277777778,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-01-01",
+      "hrv": 109.954055,
+      "rhr": 43.5,
+      "strain": 8.821348,
+      "sleep_hours": 8.074895277777777,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-01-02",
+      "hrv": 84.98913,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 8.684005555555556,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-01-03",
+      "hrv": 99.04132,
+      "rhr": 43.0,
+      "strain": 14.335426,
+      "sleep_hours": 10.566363888888889,
+      "disturbances": 20.0
+    },
+    {
+      "date": "2025-01-04",
+      "hrv": 112.10888,
+      "rhr": 47.0,
+      "strain": 9.4173975,
+      "sleep_hours": 8.619629166666666,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-01-05",
+      "hrv": 89.16163,
+      "rhr": 47.0,
+      "strain": null,
+      "sleep_hours": 6.568804444444444,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-01-06",
+      "hrv": 84.950966,
+      "rhr": 47.0,
+      "strain": null,
+      "sleep_hours": 5.5674447222222225,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-01-07",
+      "hrv": 83.658195,
+      "rhr": 50.0,
+      "strain": 8.466426,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2025-01-08",
+      "hrv": 118.24014,
+      "rhr": 44.0,
+      "strain": 6.490902,
+      "sleep_hours": 8.66775111111111,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2025-01-09",
+      "hrv": 107.94367,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 11.640128333333333,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-01-10",
+      "hrv": 107.81951,
+      "rhr": 51.0,
+      "strain": 13.528356500000001,
+      "sleep_hours": 9.076258055555556,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-01-11",
+      "hrv": 90.78399,
+      "rhr": 50.0,
+      "strain": 19.008263,
+      "sleep_hours": 8.92437,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-01-12",
+      "hrv": 88.38602866666668,
+      "rhr": 52.666666666666664,
+      "strain": null,
+      "sleep_hours": 8.067169166666666,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-01-13",
+      "hrv": 129.90607,
+      "rhr": 39.0,
+      "strain": 14.003226,
+      "sleep_hours": 6.088161111111111,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-01-14",
+      "hrv": 121.08015,
+      "rhr": 48.0,
+      "strain": 14.524308999999999,
+      "sleep_hours": 11.183203333333333,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-01-15",
+      "hrv": 125.430405,
+      "rhr": 45.0,
+      "strain": 12.0446613,
+      "sleep_hours": 7.770756666666666,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-01-16",
+      "hrv": 122.15868,
+      "rhr": 43.0,
+      "strain": 8.8601875,
+      "sleep_hours": 10.010194444444444,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-01-17",
+      "hrv": 109.33712,
+      "rhr": 44.0,
+      "strain": 14.110772,
+      "sleep_hours": 9.661106111111112,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-01-18",
+      "hrv": 97.83031,
+      "rhr": 45.0,
+      "strain": 12.757887675,
+      "sleep_hours": 7.514398055555556,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-01-19",
+      "hrv": 91.961876,
+      "rhr": 47.0,
+      "strain": 6.871071649999999,
+      "sleep_hours": 10.910848333333334,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-01-20",
+      "hrv": 108.53141,
+      "rhr": 43.0,
+      "strain": null,
+      "sleep_hours": 9.132374166666667,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-01-21",
+      "hrv": 110.68632,
+      "rhr": 47.0,
+      "strain": 12.393563,
+      "sleep_hours": 9.468848333333334,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-01-22",
+      "hrv": 92.644585,
+      "rhr": 50.5,
+      "strain": 13.4542515,
+      "sleep_hours": 7.858618333333333,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-01-23",
+      "hrv": 117.81025,
+      "rhr": 45.0,
+      "strain": 19.144882,
+      "sleep_hours": 9.709190555555555,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-01-24",
+      "hrv": 97.75249,
+      "rhr": 47.0,
+      "strain": 17.439099,
+      "sleep_hours": 7.1055641666666665,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-01-25",
+      "hrv": 102.396194,
+      "rhr": 45.0,
+      "strain": 18.110415,
+      "sleep_hours": 7.922722777777778,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-01-26",
+      "hrv": 95.94817,
+      "rhr": 49.0,
+      "strain": null,
+      "sleep_hours": 9.516903333333333,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-01-27",
+      "hrv": 109.64241,
+      "rhr": 43.0,
+      "strain": 7.33707,
+      "sleep_hours": 10.31000888888889,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-01-28",
+      "hrv": 122.022095,
+      "rhr": 41.0,
+      "strain": 15.315253,
+      "sleep_hours": 8.956127777777779,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-01-29",
+      "hrv": 115.2042,
+      "rhr": 44.0,
+      "strain": 19.204315,
+      "sleep_hours": 8.603910833333334,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-01-30",
+      "hrv": 107.690865,
+      "rhr": 43.0,
+      "strain": 12.232779,
+      "sleep_hours": 9.685150277777778,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-01-31",
+      "hrv": 150.96503,
+      "rhr": 43.0,
+      "strain": 13.55798,
+      "sleep_hours": 9.172344722222222,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-02-01",
+      "hrv": 148.04185,
+      "rhr": 41.0,
+      "strain": 14.819945333333335,
+      "sleep_hours": 9.80530861111111,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-02-02",
+      "hrv": 107.222595,
+      "rhr": 49.0,
+      "strain": 11.312437999999998,
+      "sleep_hours": 6.1843063888888885,
+      "disturbances": 3.0
+    },
+    {
+      "date": "2025-02-03",
+      "hrv": 111.99847,
+      "rhr": 37.0,
+      "strain": null,
+      "sleep_hours": 9.853644722222223,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-02-04",
+      "hrv": 123.02824,
+      "rhr": 36.0,
+      "strain": 7.867132,
+      "sleep_hours": 9.356674722222222,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-02-05",
+      "hrv": 122.52753,
+      "rhr": 40.0,
+      "strain": 20.38418,
+      "sleep_hours": 10.774673055555555,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-02-06",
+      "hrv": 105.78044,
+      "rhr": 41.0,
+      "strain": 19.68482,
+      "sleep_hours": 9.445064444444444,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-02-07",
+      "hrv": 113.696495,
+      "rhr": 41.0,
+      "strain": 13.5750527,
+      "sleep_hours": 9.68541138888889,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-02-08",
+      "hrv": 120.64029,
+      "rhr": 42.0,
+      "strain": 19.884739,
+      "sleep_hours": 8.715814722222222,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-02-09",
+      "hrv": 103.59078,
+      "rhr": 44.0,
+      "strain": 7.688603666666666,
+      "sleep_hours": 7.610516666666666,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-02-10",
+      "hrv": 110.66844,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 8.587606388888888,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-02-11",
+      "hrv": 125.36201,
+      "rhr": 37.0,
+      "strain": 13.142730499999999,
+      "sleep_hours": 8.659726944444444,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-02-12",
+      "hrv": 121.7502275,
+      "rhr": 40.5,
+      "strain": null,
+      "sleep_hours": 8.827938611111112,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-02-13",
+      "hrv": null,
+      "rhr": null,
+      "strain": 7.978033,
+      "sleep_hours": null,
+      "disturbances": null
+    },
+    {
+      "date": "2025-02-14",
+      "hrv": 127.91626,
+      "rhr": 41.0,
+      "strain": 18.756376,
+      "sleep_hours": 10.05392111111111,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-02-15",
+      "hrv": 136.88992,
+      "rhr": 46.0,
+      "strain": 12.557579333333331,
+      "sleep_hours": 8.073589444444444,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-02-16",
+      "hrv": 123.23322,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 6.969666111111111,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-02-17",
+      "hrv": 123.36731,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 10.943159722222223,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-02-18",
+      "hrv": 158.59178,
+      "rhr": 41.0,
+      "strain": 14.562575333333333,
+      "sleep_hours": 8.323253333333334,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-02-19",
+      "hrv": 129.35538,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 8.109384444444444,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-02-20",
+      "hrv": 129.177,
+      "rhr": 43.0,
+      "strain": 9.15789885,
+      "sleep_hours": 9.372734166666667,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-02-21",
+      "hrv": 112.10421,
+      "rhr": 44.0,
+      "strain": 10.431551,
+      "sleep_hours": 9.405025277777778,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-02-22",
+      "hrv": 102.42853,
+      "rhr": 42.0,
+      "strain": 9.61068,
+      "sleep_hours": 10.15781111111111,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-02-23",
+      "hrv": 117.64752,
+      "rhr": 40.0,
+      "strain": 8.7488835,
+      "sleep_hours": 8.3312525,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-02-24",
+      "hrv": 108.09929,
+      "rhr": 43.5,
+      "strain": 7.2203674,
+      "sleep_hours": 8.707799444444445,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-02-25",
+      "hrv": 134.23863,
+      "rhr": 40.0,
+      "strain": 8.292587,
+      "sleep_hours": 9.05252138888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-02-26",
+      "hrv": 141.52512,
+      "rhr": 42.0,
+      "strain": 11.950574,
+      "sleep_hours": 9.517094722222222,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-02-27",
+      "hrv": 130.6354,
+      "rhr": 42.0,
+      "strain": 10.1945835,
+      "sleep_hours": 8.205569166666667,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-02-28",
+      "hrv": 139.558,
+      "rhr": 43.0,
+      "strain": 11.204864333333333,
+      "sleep_hours": 8.508988333333333,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-03-01",
+      "hrv": 100.476965,
+      "rhr": 42.0,
+      "strain": null,
+      "sleep_hours": 7.869263888888889,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-03-02",
+      "hrv": 108.045522,
+      "rhr": 47.0,
+      "strain": 10.3771415,
+      "sleep_hours": 10.749683055555556,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-03-03",
+      "hrv": 132.1399,
+      "rhr": 42.0,
+      "strain": 9.1323382,
+      "sleep_hours": 10.270160555555556,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-03-04",
+      "hrv": 126.4776,
+      "rhr": 41.0,
+      "strain": 5.7348127,
+      "sleep_hours": 7.546485277777777,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-05",
+      "hrv": 84.84663,
+      "rhr": 46.0,
+      "strain": 7.4497104,
+      "sleep_hours": 8.448176111111112,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-03-06",
+      "hrv": 100.9564,
+      "rhr": 44.0,
+      "strain": 12.842473,
+      "sleep_hours": 8.436086944444444,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-03-07",
+      "hrv": 82.927155,
+      "rhr": 45.0,
+      "strain": 11.817711,
+      "sleep_hours": 8.863439722222223,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-03-08",
+      "hrv": 137.95033,
+      "rhr": 37.0,
+      "strain": 10.7496912,
+      "sleep_hours": 7.3810725,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-03-09",
+      "hrv": 111.47849,
+      "rhr": 43.0,
+      "strain": 12.9528853,
+      "sleep_hours": 8.77114,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-10",
+      "hrv": 133.50746,
+      "rhr": 40.0,
+      "strain": 17.02956,
+      "sleep_hours": 10.250198333333334,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-11",
+      "hrv": 123.9533,
+      "rhr": 43.0,
+      "strain": 18.305922,
+      "sleep_hours": 5.832057777777778,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-03-12",
+      "hrv": 129.48906,
+      "rhr": 43.0,
+      "strain": 19.493664,
+      "sleep_hours": 10.215073055555555,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-03-13",
+      "hrv": 145.85295,
+      "rhr": 39.0,
+      "strain": 19.72489,
+      "sleep_hours": 8.9184675,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-03-14",
+      "hrv": 124.10201,
+      "rhr": 41.0,
+      "strain": 9.12917,
+      "sleep_hours": 10.532521388888888,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-03-15",
+      "hrv": 117.92666,
+      "rhr": 42.0,
+      "strain": 13.863557,
+      "sleep_hours": 7.3076083333333335,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-03-16",
+      "hrv": 85.89803,
+      "rhr": 47.0,
+      "strain": 9.6580642,
+      "sleep_hours": 8.600527222222222,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-03-17",
+      "hrv": 135.93687,
+      "rhr": 37.0,
+      "strain": null,
+      "sleep_hours": 8.837209722222223,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-03-18",
+      "hrv": 132.75644,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 6.613386666666667,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-03-19",
+      "hrv": 101.05423,
+      "rhr": 42.0,
+      "strain": 5.6316144999999995,
+      "sleep_hours": 8.018783055555556,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-20",
+      "hrv": 102.756454,
+      "rhr": 46.0,
+      "strain": 10.705883,
+      "sleep_hours": 7.5970313888888885,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-03-21",
+      "hrv": 107.39155,
+      "rhr": 41.0,
+      "strain": 9.2952405,
+      "sleep_hours": 11.880428333333333,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-03-22",
+      "hrv": 99.32362,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 8.299438888888888,
+      "disturbances": 16.0
+    },
+    {
+      "date": "2025-03-23",
+      "hrv": 49.005317500000004,
+      "rhr": 55.5,
+      "strain": 12.888050333333334,
+      "sleep_hours": 4.765569444444444,
+      "disturbances": 1.0
+    },
+    {
+      "date": "2025-03-24",
+      "hrv": 132.56165,
+      "rhr": 40.0,
+      "strain": 12.569178,
+      "sleep_hours": 9.300869166666667,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-03-25",
+      "hrv": 115.133545,
+      "rhr": 42.0,
+      "strain": 9.449725,
+      "sleep_hours": 9.965749166666667,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-26",
+      "hrv": 83.12799,
+      "rhr": 46.0,
+      "strain": 8.547235,
+      "sleep_hours": 8.394252222222223,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-03-27",
+      "hrv": 92.46698,
+      "rhr": 45.0,
+      "strain": null,
+      "sleep_hours": 9.65350138888889,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-03-28",
+      "hrv": 78.25536,
+      "rhr": 48.0,
+      "strain": 11.581037133333332,
+      "sleep_hours": 6.448879166666667,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-03-29",
+      "hrv": 91.71985333333333,
+      "rhr": 51.333333333333336,
+      "strain": null,
+      "sleep_hours": 5.759574166666667,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-03-30",
+      "hrv": 65.86831,
+      "rhr": 50.0,
+      "strain": 7.7281313,
+      "sleep_hours": 7.384696388888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-03-31",
+      "hrv": 112.247574,
+      "rhr": 45.0,
+      "strain": 8.742253250000001,
+      "sleep_hours": 11.962654444444444,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-04-01",
+      "hrv": 80.317027,
+      "rhr": 49.0,
+      "strain": 10.6784285,
+      "sleep_hours": 8.279030833333334,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-04-02",
+      "hrv": 82.47169,
+      "rhr": 46.0,
+      "strain": 10.848379,
+      "sleep_hours": 9.2367875,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-04-03",
+      "hrv": 76.05245500000001,
+      "rhr": 53.5,
+      "strain": null,
+      "sleep_hours": 4.7452716666666666,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-04-04",
+      "hrv": 104.70191,
+      "rhr": 48.0,
+      "strain": null,
+      "sleep_hours": 10.23079888888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-04-05",
+      "hrv": 113.20937,
+      "rhr": 45.0,
+      "strain": 11.2515815,
+      "sleep_hours": 8.781578055555556,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-04-06",
+      "hrv": 112.22222,
+      "rhr": 44.0,
+      "strain": 16.313892,
+      "sleep_hours": 11.486047777777777,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-04-07",
+      "hrv": 105.75659,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 8.884319166666666,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-04-08",
+      "hrv": 121.33716,
+      "rhr": 43.0,
+      "strain": 13.940130499999999,
+      "sleep_hours": 9.266210555555556,
+      "disturbances": 16.0
+    },
+    {
+      "date": "2025-04-09",
+      "hrv": 126.76697,
+      "rhr": 47.0,
+      "strain": 8.495387,
+      "sleep_hours": 9.638552222222222,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-04-10",
+      "hrv": 119.922195,
+      "rhr": 44.0,
+      "strain": 17.497534,
+      "sleep_hours": 9.075550833333333,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-04-11",
+      "hrv": 84.04902,
+      "rhr": 46.0,
+      "strain": 12.7740034,
+      "sleep_hours": 10.66761638888889,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-04-12",
+      "hrv": 91.68623,
+      "rhr": 44.0,
+      "strain": 4.7513475,
+      "sleep_hours": 9.337920277777778,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-04-13",
+      "hrv": 99.629005,
+      "rhr": 42.0,
+      "strain": 16.60348,
+      "sleep_hours": 8.691614444444445,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-04-14",
+      "hrv": 136.4311,
+      "rhr": 38.0,
+      "strain": 8.361567,
+      "sleep_hours": 9.020488333333333,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-04-15",
+      "hrv": 93.58336,
+      "rhr": 45.0,
+      "strain": 14.876014,
+      "sleep_hours": 8.88105611111111,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-04-16",
+      "hrv": 78.02927,
+      "rhr": 45.0,
+      "strain": 11.685914,
+      "sleep_hours": 9.581228888888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-04-17",
+      "hrv": 108.26716,
+      "rhr": 42.0,
+      "strain": 19.125605,
+      "sleep_hours": 9.173529444444444,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-04-18",
+      "hrv": 130.31445,
+      "rhr": 41.0,
+      "strain": 15.963155,
+      "sleep_hours": 9.340922222222222,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-04-19",
+      "hrv": 126.37095,
+      "rhr": 41.0,
+      "strain": 14.169632,
+      "sleep_hours": 9.487279166666667,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-04-20",
+      "hrv": 108.94475,
+      "rhr": 46.0,
+      "strain": 12.916685,
+      "sleep_hours": 9.428544722222222,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-04-21",
+      "hrv": 129.10208,
+      "rhr": 37.0,
+      "strain": 13.25986,
+      "sleep_hours": 9.645346388888889,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-04-22",
+      "hrv": 140.99902,
+      "rhr": 40.0,
+      "strain": 13.344702333333332,
+      "sleep_hours": 9.472915277777778,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-04-23",
+      "hrv": 140.92436,
+      "rhr": 42.0,
+      "strain": 14.017419,
+      "sleep_hours": 8.022175,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-04-24",
+      "hrv": 158.81033,
+      "rhr": 44.0,
+      "strain": 18.797388,
+      "sleep_hours": 7.961651666666667,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-04-25",
+      "hrv": 117.30093,
+      "rhr": 42.0,
+      "strain": 8.923987499999999,
+      "sleep_hours": 8.605872777777778,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-04-26",
+      "hrv": 120.19104,
+      "rhr": 40.0,
+      "strain": 10.887995749999998,
+      "sleep_hours": 7.5624425,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-04-27",
+      "hrv": 113.824131,
+      "rhr": 42.5,
+      "strain": 11.633314,
+      "sleep_hours": 8.7000425,
+      "disturbances": 17.0
+    },
+    {
+      "date": "2025-04-28",
+      "hrv": 122.25554,
+      "rhr": 37.0,
+      "strain": null,
+      "sleep_hours": 9.228778333333333,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-04-29",
+      "hrv": 108.573975,
+      "rhr": 42.0,
+      "strain": 18.06107,
+      "sleep_hours": 8.479648611111111,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-04-30",
+      "hrv": 97.23827,
+      "rhr": 44.0,
+      "strain": 9.1569888,
+      "sleep_hours": 7.386215555555555,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-01",
+      "hrv": 116.461075,
+      "rhr": 42.0,
+      "strain": 9.292406,
+      "sleep_hours": 11.235993333333333,
+      "disturbances": 21.0
+    },
+    {
+      "date": "2025-05-02",
+      "hrv": 114.64716,
+      "rhr": 43.0,
+      "strain": 12.677468999999999,
+      "sleep_hours": 8.915882777777778,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-05-03",
+      "hrv": 84.51653,
+      "rhr": 47.0,
+      "strain": 19.11858,
+      "sleep_hours": 8.47557638888889,
+      "disturbances": 20.0
+    },
+    {
+      "date": "2025-05-04",
+      "hrv": 112.97879,
+      "rhr": 39.0,
+      "strain": 18.704897,
+      "sleep_hours": 8.7516025,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-05",
+      "hrv": 98.98441,
+      "rhr": 41.0,
+      "strain": null,
+      "sleep_hours": 9.3537725,
+      "disturbances": 19.0
+    },
+    {
+      "date": "2025-05-06",
+      "hrv": 128.5193,
+      "rhr": 40.0,
+      "strain": 9.088711,
+      "sleep_hours": 9.596515277777778,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-05-07",
+      "hrv": 82.569916,
+      "rhr": 47.0,
+      "strain": 18.266758,
+      "sleep_hours": 8.894969166666666,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-05-08",
+      "hrv": 76.300514,
+      "rhr": 46.0,
+      "strain": 16.379753,
+      "sleep_hours": 10.654366666666666,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-05-09",
+      "hrv": 93.46538,
+      "rhr": 44.0,
+      "strain": 10.9556312,
+      "sleep_hours": 7.8989344444444445,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-10",
+      "hrv": 113.36598,
+      "rhr": 40.0,
+      "strain": 5.627546,
+      "sleep_hours": 9.450293333333333,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-05-11",
+      "hrv": 109.37911,
+      "rhr": 41.0,
+      "strain": 16.232754,
+      "sleep_hours": 10.302885277777778,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-12",
+      "hrv": 122.35663,
+      "rhr": 40.0,
+      "strain": null,
+      "sleep_hours": 8.966784722222222,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-05-13",
+      "hrv": 92.11091,
+      "rhr": 46.0,
+      "strain": 13.204640000000001,
+      "sleep_hours": 7.328559444444444,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-14",
+      "hrv": 98.11354,
+      "rhr": 45.0,
+      "strain": 8.339999,
+      "sleep_hours": 14.780372777777778,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-15",
+      "hrv": 81.964584,
+      "rhr": 44.0,
+      "strain": 7.250636,
+      "sleep_hours": 6.818506666666667,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-05-16",
+      "hrv": 84.43105,
+      "rhr": 45.0,
+      "strain": 16.635187333333334,
+      "sleep_hours": 8.411628888888888,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-05-17",
+      "hrv": 110.62518,
+      "rhr": 42.0,
+      "strain": 8.494946,
+      "sleep_hours": 9.597480833333334,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-05-18",
+      "hrv": 102.2422,
+      "rhr": 41.0,
+      "strain": 9.2367255,
+      "sleep_hours": 9.248906111111111,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-19",
+      "hrv": 120.67481,
+      "rhr": 40.0,
+      "strain": 17.251522,
+      "sleep_hours": 8.400459166666666,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-05-20",
+      "hrv": 86.737625,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 9.196685,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-05-21",
+      "hrv": 120.71737,
+      "rhr": 43.0,
+      "strain": 10.80835315,
+      "sleep_hours": 9.172447777777778,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-05-22",
+      "hrv": 79.72369,
+      "rhr": 50.5,
+      "strain": 5.4026504,
+      "sleep_hours": 8.254012777777778,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-05-23",
+      "hrv": 118.78108,
+      "rhr": 44.0,
+      "strain": 10.988480375,
+      "sleep_hours": 7.5063925,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-05-24",
+      "hrv": 83.82533,
+      "rhr": 46.0,
+      "strain": 10.739701499999999,
+      "sleep_hours": 9.340944166666667,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-05-25",
+      "hrv": 96.89684,
+      "rhr": 44.0,
+      "strain": null,
+      "sleep_hours": 8.220164166666667,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-05-26",
+      "hrv": 91.65533500000001,
+      "rhr": 46.5,
+      "strain": 17.510025,
+      "sleep_hours": 8.822815833333333,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-27",
+      "hrv": 83.10232,
+      "rhr": 47.0,
+      "strain": 16.608785,
+      "sleep_hours": 8.1849475,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-05-28",
+      "hrv": 102.57945,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 9.762741111111112,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-05-29",
+      "hrv": 71.83319,
+      "rhr": 45.0,
+      "strain": 14.438276,
+      "sleep_hours": 8.4884325,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-05-30",
+      "hrv": 59.381103,
+      "rhr": 48.5,
+      "strain": 8.56778975,
+      "sleep_hours": 8.932343888888889,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-05-31",
+      "hrv": 62.127197,
+      "rhr": 46.0,
+      "strain": 11.2689105,
+      "sleep_hours": 8.248605,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-06-01",
+      "hrv": 108.23267,
+      "rhr": 41.0,
+      "strain": 18.66804,
+      "sleep_hours": 9.861642222222223,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-06-02",
+      "hrv": 92.156364,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 9.465725277777779,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-06-03",
+      "hrv": 134.93181,
+      "rhr": 43.0,
+      "strain": 17.919336,
+      "sleep_hours": 7.576286388888889,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-06-04",
+      "hrv": 124.50152,
+      "rhr": 42.0,
+      "strain": 17.3897915,
+      "sleep_hours": 10.083571944444444,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-06-05",
+      "hrv": 125.76122,
+      "rhr": 44.0,
+      "strain": 15.008979,
+      "sleep_hours": 6.677660555555556,
+      "disturbances": 4.0
+    },
+    {
+      "date": "2025-06-06",
+      "hrv": 132.26556,
+      "rhr": 45.0,
+      "strain": 7.6231,
+      "sleep_hours": 8.347759722222222,
+      "disturbances": 20.0
+    },
+    {
+      "date": "2025-06-07",
+      "hrv": 130.83057,
+      "rhr": 42.0,
+      "strain": 17.51647,
+      "sleep_hours": 8.550576388888889,
+      "disturbances": 18.0
+    },
+    {
+      "date": "2025-06-08",
+      "hrv": 107.9606,
+      "rhr": 42.0,
+      "strain": 12.675255333333334,
+      "sleep_hours": 8.7561125,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-06-09",
+      "hrv": 82.680285,
+      "rhr": 46.5,
+      "strain": 7.0709453,
+      "sleep_hours": 10.228433333333333,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-06-10",
+      "hrv": 83.902365,
+      "rhr": 45.5,
+      "strain": null,
+      "sleep_hours": 8.294188055555555,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-06-11",
+      "hrv": 86.926636,
+      "rhr": 44.0,
+      "strain": 15.905799,
+      "sleep_hours": 8.27620361111111,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-06-12",
+      "hrv": 91.77467,
+      "rhr": 42.0,
+      "strain": 14.646204,
+      "sleep_hours": 9.226841944444445,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-06-13",
+      "hrv": 82.07231,
+      "rhr": 44.0,
+      "strain": 13.765858,
+      "sleep_hours": 8.147731111111112,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-06-14",
+      "hrv": 63.51346,
+      "rhr": 46.0,
+      "strain": 16.4008715,
+      "sleep_hours": 8.386941944444445,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-06-15",
+      "hrv": 78.656105,
+      "rhr": 43.0,
+      "strain": 10.770224333333333,
+      "sleep_hours": 9.536196944444445,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-06-16",
+      "hrv": 114.16559,
+      "rhr": 40.0,
+      "strain": null,
+      "sleep_hours": 12.216689166666667,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-06-17",
+      "hrv": 125.94831,
+      "rhr": 40.0,
+      "strain": 11.07203525,
+      "sleep_hours": 9.230611944444444,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-06-18",
+      "hrv": 119.07065,
+      "rhr": 38.0,
+      "strain": 6.217928075,
+      "sleep_hours": 9.525665,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-06-19",
+      "hrv": 108.27583,
+      "rhr": 39.0,
+      "strain": 6.277991,
+      "sleep_hours": 9.15273388888889,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-06-20",
+      "hrv": 114.130424,
+      "rhr": 40.0,
+      "strain": 6.967955,
+      "sleep_hours": 8.31518111111111,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-06-21",
+      "hrv": 93.00937,
+      "rhr": 43.0,
+      "strain": 11.8012865,
+      "sleep_hours": 8.917479722222222,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-06-22",
+      "hrv": 128.00407,
+      "rhr": 39.0,
+      "strain": 9.049903166666667,
+      "sleep_hours": 8.427412222222221,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-06-23",
+      "hrv": 121.76148,
+      "rhr": 41.0,
+      "strain": null,
+      "sleep_hours": 9.125879166666667,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-06-24",
+      "hrv": 117.968175,
+      "rhr": 40.0,
+      "strain": 11.941065,
+      "sleep_hours": 9.096501388888889,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-06-25",
+      "hrv": 143.65678,
+      "rhr": 39.0,
+      "strain": 13.386268999999999,
+      "sleep_hours": 9.416066944444445,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-06-26",
+      "hrv": 130.31378,
+      "rhr": 41.0,
+      "strain": 0.013069523,
+      "sleep_hours": 10.048245,
+      "disturbances": 16.0
+    },
+    {
+      "date": "2025-06-27",
+      "hrv": 148.15839,
+      "rhr": 39.0,
+      "strain": 10.371557750000001,
+      "sleep_hours": 8.731220555555556,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-06-28",
+      "hrv": 115.89827,
+      "rhr": 38.0,
+      "strain": 13.977169,
+      "sleep_hours": 11.832379722222223,
+      "disturbances": 13.0
+    },
+    {
+      "date": "2025-06-29",
+      "hrv": 130.3192,
+      "rhr": 40.0,
+      "strain": 8.564707,
+      "sleep_hours": 9.26079111111111,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-06-30",
+      "hrv": 120.96958,
+      "rhr": 40.0,
+      "strain": 16.513144,
+      "sleep_hours": 10.486719444444445,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-07-01",
+      "hrv": 119.26602,
+      "rhr": 37.0,
+      "strain": 10.801114250000001,
+      "sleep_hours": 9.201362222222222,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-07-02",
+      "hrv": 129.52162,
+      "rhr": 43.0,
+      "strain": 14.904702,
+      "sleep_hours": 9.159634722222222,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-07-03",
+      "hrv": 126.39326,
+      "rhr": 37.0,
+      "strain": 13.51375,
+      "sleep_hours": 9.200905,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-07-04",
+      "hrv": 128.27422,
+      "rhr": 39.0,
+      "strain": 9.896827166666666,
+      "sleep_hours": 11.543942777777778,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-07-05",
+      "hrv": 98.409545,
+      "rhr": 42.5,
+      "strain": 11.740108399999999,
+      "sleep_hours": 7.294059722222222,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-07-06",
+      "hrv": 126.024574,
+      "rhr": 39.0,
+      "strain": 18.287085,
+      "sleep_hours": 8.079697222222222,
+      "disturbances": 5.0
+    },
+    {
+      "date": "2025-07-07",
+      "hrv": 127.457054,
+      "rhr": 40.0,
+      "strain": null,
+      "sleep_hours": 9.118883333333333,
+      "disturbances": 9.0
+    },
+    {
+      "date": "2025-07-08",
+      "hrv": 139.3095,
+      "rhr": 43.0,
+      "strain": 15.335264,
+      "sleep_hours": 9.054977777777777,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-07-09",
+      "hrv": 136.53973,
+      "rhr": 42.0,
+      "strain": 9.1883403,
+      "sleep_hours": 9.208616666666666,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-07-10",
+      "hrv": 94.46369250000001,
+      "rhr": 44.5,
+      "strain": 19.745745,
+      "sleep_hours": 8.808677777777778,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-07-11",
+      "hrv": 127.468216,
+      "rhr": 39.0,
+      "strain": 12.286893500000001,
+      "sleep_hours": 8.499041666666667,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-07-12",
+      "hrv": 117.35884,
+      "rhr": 43.0,
+      "strain": 16.792206,
+      "sleep_hours": 10.828758333333333,
+      "disturbances": 12.0
+    },
+    {
+      "date": "2025-07-13",
+      "hrv": 108.09806,
+      "rhr": 40.0,
+      "strain": null,
+      "sleep_hours": 8.347487777777777,
+      "disturbances": 6.0
+    },
+    {
+      "date": "2025-07-14",
+      "hrv": 118.31392,
+      "rhr": 41.0,
+      "strain": 9.665214,
+      "sleep_hours": 8.476400277777778,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-07-15",
+      "hrv": 124.303856,
+      "rhr": 40.0,
+      "strain": 18.307447,
+      "sleep_hours": 8.9273175,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-07-16",
+      "hrv": 124.53496,
+      "rhr": 44.0,
+      "strain": 16.771544,
+      "sleep_hours": 9.315471944444445,
+      "disturbances": 8.0
+    },
+    {
+      "date": "2025-07-17",
+      "hrv": 120.66173,
+      "rhr": 38.0,
+      "strain": 8.607409766666667,
+      "sleep_hours": 5.238494444444444,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-07-18",
+      "hrv": 126.94725,
+      "rhr": 41.0,
+      "strain": null,
+      "sleep_hours": 9.141941666666666,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-07-19",
+      "hrv": 152.73566,
+      "rhr": 42.0,
+      "strain": 15.527796,
+      "sleep_hours": 7.242313888888889,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-07-20",
+      "hrv": 116.59058,
+      "rhr": 42.0,
+      "strain": 10.146878300000001,
+      "sleep_hours": 10.11698611111111,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-07-21",
+      "hrv": 146.65028,
+      "rhr": 39.0,
+      "strain": 8.107017,
+      "sleep_hours": 8.40023888888889,
+      "disturbances": 7.0
+    },
+    {
+      "date": "2025-07-22",
+      "hrv": 112.81124,
+      "rhr": 44.0,
+      "strain": 11.04451,
+      "sleep_hours": 8.458844444444445,
+      "disturbances": 18.0
+    },
+    {
+      "date": "2025-07-23",
+      "hrv": 133.23654,
+      "rhr": 46.5,
+      "strain": 15.3971345,
+      "sleep_hours": 8.141913888888888,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-07-24",
+      "hrv": 137.4181,
+      "rhr": 42.0,
+      "strain": 13.154645,
+      "sleep_hours": 8.718352777777778,
+      "disturbances": 15.0
+    },
+    {
+      "date": "2025-07-25",
+      "hrv": 117.05607,
+      "rhr": 44.0,
+      "strain": 13.559798,
+      "sleep_hours": 8.208566666666666,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-07-26",
+      "hrv": 118.31232,
+      "rhr": 41.0,
+      "strain": 13.98286825,
+      "sleep_hours": 8.658716666666667,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-07-27",
+      "hrv": 134.69537,
+      "rhr": 40.0,
+      "strain": 8.69561385,
+      "sleep_hours": 9.384736111111112,
+      "disturbances": 11.0
+    },
+    {
+      "date": "2025-07-28",
+      "hrv": 136.89532,
+      "rhr": 39.0,
+      "strain": null,
+      "sleep_hours": 8.176325,
+      "disturbances": 14.0
+    },
+    {
+      "date": "2025-07-29",
+      "hrv": 110.171364,
+      "rhr": 41.0,
+      "strain": 13.9780715,
+      "sleep_hours": 8.404672222222223,
+      "disturbances": 10.0
+    },
+    {
+      "date": "2025-07-30",
+      "hrv": 136.50978,
+      "rhr": 46.0,
+      "strain": null,
+      "sleep_hours": 8.893855555555556,
+      "disturbances": 10.0
+    }
+  ]
+}
