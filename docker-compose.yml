@@ -122,8 +122,22 @@ services:
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
       - OUTPUTS_DIR=/app/shared/outputs
+      - PYTHONPATH=/app
     depends_on:
       - mlflow
+    restart: unless-stopped
+
+  fetch_scheduler:
+    build:
+      context: ./fetch_scheduler
+      dockerfile: Dockerfile
+    image: whoop_fetch_scheduler:dev
+    container_name: fetch_scheduler
+    environment:
+      - TARGET_URL=http://whoop_api:8000/fetch-data
+      - RUN_INTERVAL_SECONDS=3600
+    depends_on:
+      - whoop_api
     restart: unless-stopped
 
   dev_agent:
