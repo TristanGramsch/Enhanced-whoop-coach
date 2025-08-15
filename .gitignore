@@ -17,3 +17,5 @@ venv/
 # Data artifacts
 shared/outputs/dev_debrief.json
 shared/uploads/
+# Local scripts
+credentials
