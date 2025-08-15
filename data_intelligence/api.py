@@ -6,7 +6,7 @@ from pathlib import Path
 import json
 import os
 
-from analyze import run_intelligence
+from data_intelligence.analyze import run_intelligence
 
 app = FastAPI(title="Data Intelligence API")
 

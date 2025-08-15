@@ -12,6 +12,7 @@ services:
       - PYTHONUNBUFFERED=1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
       - OUTPUTS_DIR=/app/shared/outputs
+      - PYTHONPATH=/app
     volumes:
       - ./data:/app/data:ro
       - ./shared:/app/shared
@@ -19,25 +20,25 @@ services:
       - ./data_intelligence:/app/data_intelligence:ro
       - ./llm_agent:/app/llm_agent:ro
       - ./journal_analysis:/app/journal_analysis:ro
+      - ./tests:/app/tests:ro
     depends_on:
       - mlflow
     restart: on-failure
 
   dashboard:
     build:
-      context: ./frontend
+      context: ./dashboard
       dockerfile: Dockerfile
     image: hrv_dashboard:dev
     container_name: hrv_dashboard
     ports:
-      - "8501:8501"
+      - "8601:8601"
     environment:
       - PYTHONUNBUFFERED=1
       - OUTPUTS_DIR=/app/shared/outputs
     depends_on:
       - orchestrator
     volumes:
-      - ./data:/app/data:ro
       - ./shared:/app/shared
     restart: unless-stopped
 

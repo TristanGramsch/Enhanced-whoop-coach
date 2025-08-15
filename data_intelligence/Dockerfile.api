@@ -5,8 +5,12 @@ WORKDIR /app
 # Install deps
 RUN pip install --no-cache-dir fastapi==0.110.0 uvicorn[standard]==0.29.0 numpy>=2.0.0
 
+# Copy package files
+COPY __init__.py /app/data_intelligence/__init__.py
 COPY analyze.py /app/data_intelligence/analyze.py
 COPY api.py /app/data_intelligence/api.py
+
+ENV PYTHONPATH=/app
 
 WORKDIR /app/data_intelligence
 EXPOSE 7000

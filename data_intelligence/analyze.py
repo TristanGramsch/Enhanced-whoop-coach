@@ -8,6 +8,14 @@ import os
 
 import numpy as np
 
+from .analytics import (
+    build_timeseries,
+    compute_correlations,
+    compute_seasonality,
+    compute_anomalies,
+    summarize_backtests,
+)
+
 
 def parse_date(date_str: str) -> datetime:
     return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
@@ -66,13 +74,16 @@ def compute_trend_metrics(daily: List[Tuple[datetime, float]]) -> Dict[str, Any]
 def run_intelligence(data_dir: str, outputs_dir: str, training_metrics: Dict[str, Any]) -> Dict[str, Any]:
     Path(outputs_dir).mkdir(parents=True, exist_ok=True)
 
+    # Core daily and trend summary
     daily = load_history(data_dir)
     trend = compute_trend_metrics(daily)
 
-    # Load model predictions
+    # Load model predictions (if present)
     pred_path = Path(outputs_dir) / "model_predictions.json"
-    with open(pred_path, "r") as f:
-        preds = json.load(f)
+    preds = {"next_7_day_forecast": []}
+    if pred_path.exists():
+        with open(pred_path, "r") as f:
+            preds = json.load(f)
 
     last_date = daily[-1][0].date().isoformat() if daily else None
     last_hrv = float(daily[-1][1]) if daily else None
@@ -91,6 +102,13 @@ def run_intelligence(data_dir: str, outputs_dir: str, training_metrics: Dict[str
     out_path = Path(outputs_dir) / "intelligence_summary.json"
     with open(out_path, "w") as f:
         json.dump(summary, f, indent=2)
+
+    # Extended analytics artifacts
+    ts = build_timeseries(data_dir=data_dir, outputs_dir=outputs_dir)
+    compute_correlations(ts, outputs_dir)
+    compute_seasonality(ts, outputs_dir)
+    compute_anomalies(ts, outputs_dir)
+    summarize_backtests(outputs_dir)
 
     return {
         "summary_path": str(out_path),

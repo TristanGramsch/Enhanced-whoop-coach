@@ -15,42 +15,42 @@ st.title("HRV Prediction MVP")
 
 # Control Center quick links
 with st.expander("Control Center: Services & Actions", expanded=True):
-    host = os.environ.get("HOST_IP", "localhost")
-    st.markdown(
-        f"- [MLflow](http://{host}:5000)  \n"
-        f"- [Dagster](http://{host}:3000)  \n"
-        f"- [Journal Web](http://{host}:8080)  \n"
-        f"- [Data Intelligence API](http://{host}:7000/health)  \n"
-        f"- [WHOOP Server](http://{host}:8000)  \n"
-        f"- [This Dashboard](http://{host}:8501)"
-    )
-    colA, colB = st.columns(2)
-    with colA:
-        if st.button("Fetch WHOOP Data"):
-            try:
-                import requests
-                r = requests.get("http://whoop_api:8000/fetch-data", timeout=5)
-                st.write("Triggered WHOOP fetch:", r.status_code)
-            except Exception as e:
-                st.write("Failed to trigger WHOOP fetch:", e)
-    with colB:
-        if st.button("Run Pipeline Now"):
-            try:
-                st.write("Run: docker compose run --rm orchestrator python -u run_pipeline.py")
-            except Exception as e:
-                st.write("Failed to trigger pipeline:", e)
-    last_run = OUTPUTS_DIR / "last_run.json"
-    if last_run.exists():
-        with st.expander("Last Run Status"):
-            try:
-                st.json(json.loads(last_run.read_text()))
-            except Exception:
-                st.write("Could not read last_run.json")
+	host = os.environ.get("HOST_IP", "localhost")
+	st.markdown(
+		f"- [MLflow](http://{host}:5000)  \n"
+		f"- [Dagster](http://{host}:3000)  \n"
+		f"- [Journal Web](http://{host}:8080)  \n"
+		f"- [Data Intelligence API](http://{host}:7000/health)  \n"
+		f"- [WHOOP Server](http://{host}:8000)  \n"
+		f"- [Recovery Intelligence Dashboard](http://{host}:8601)"
+	)
+	colA, colB = st.columns(2)
+	with colA:
+		if st.button("Fetch WHOOP Data"):
+			try:
+				import requests
+				r = requests.get("http://whoop_api:8000/fetch-data", timeout=5)
+				st.write("Triggered WHOOP fetch:", r.status_code)
+			except Exception as e:
+				st.write("Failed to trigger WHOOP fetch:", e)
+	with colB:
+		if st.button("Run Pipeline Now"):
+			try:
+				st.write("Run: docker compose run --rm orchestrator python -u run_pipeline.py")
+			except Exception as e:
+				st.write("Failed to trigger pipeline:", e)
+	last_run = OUTPUTS_DIR / "last_run.json"
+	if last_run.exists():
+		with st.expander("Last Run Status"):
+			try:
+				st.json(json.loads(last_run.read_text()))
+			except Exception:
+				st.write("Could not read last_run.json")
 
 # Load historical HRV
 recovery_path = DATA_DIR / "recovery" / "recoveries.json"
 with open(recovery_path, "r") as f:
-    records = json.load(f)
+	records = json.load(f)
 
 daily_map = {}
 for rec in records:
