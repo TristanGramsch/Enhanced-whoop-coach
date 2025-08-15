@@ -5,25 +5,15 @@ from datetime import datetime
 
 # Ensure module paths are available inside the container
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MODULE_DIRS = [
-    REPO_ROOT / "model_training",
-    REPO_ROOT / "data_intelligence",
-    REPO_ROOT / "llm_agent",
-    REPO_ROOT / "shared",
-]
-for module_dir in MODULE_DIRS:
-    sys.path.append(str(module_dir))
+# Add repo root so package-qualified imports work
+if str(REPO_ROOT) not in sys.path:
+    sys.path.append(str(REPO_ROOT))
 
-from train import run_training_pipeline  # type: ignore
-from analyze import run_intelligence  # type: ignore
-from agent import run_agent  # type: ignore
-
-# Journal processing
-sys.path.append(str(REPO_ROOT / "journal_analysis"))
-from process_journal import run_journal_processing  # type: ignore
-
-# Prediction tracking
-from prediction_tracking import append_next_day_prediction, reconcile_with_actuals  # type: ignore
+from model_training.train import run_training_pipeline  # type: ignore
+from data_intelligence.analyze import run_intelligence  # type: ignore
+from llm_agent.agent import run_agent  # type: ignore
+from journal_analysis.process_journal import run_journal_processing  # type: ignore
+from data_intelligence.prediction_tracking import append_next_day_prediction, reconcile_with_actuals  # type: ignore
 
 
 def ensure_directories(outputs_dir: Path, models_dir: Path):

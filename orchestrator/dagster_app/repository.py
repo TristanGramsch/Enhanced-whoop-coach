@@ -6,7 +6,8 @@ from dagster import job, op, Definitions
 
 # Extend sys.path for module imports
 import sys
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# repository.py is in /app/dagster_app; repo root is its parent (/app)
+REPO_ROOT = Path(__file__).resolve().parents[1]
 for p in [
     REPO_ROOT / "journal_analysis",
     REPO_ROOT / "model_training",
@@ -16,10 +17,10 @@ for p in [
     if str(p) not in sys.path:
         sys.path.append(str(p))
 
-from process_journal import run_journal_processing  # type: ignore
-from train import run_training_pipeline  # type: ignore
-from analyze import run_intelligence  # type: ignore
-from agent import run_agent  # type: ignore
+from journal_analysis.process_journal import run_journal_processing  # type: ignore
+from model_training.train import run_training_pipeline  # type: ignore
+from data_intelligence.analyze import run_intelligence  # type: ignore
+from llm_agent.agent import run_agent  # type: ignore
 
 OUTPUTS_DIR = os.environ.get("OUTPUTS_DIR", str(REPO_ROOT / "shared" / "outputs"))
 

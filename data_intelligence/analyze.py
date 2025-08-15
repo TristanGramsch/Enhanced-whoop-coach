@@ -8,7 +8,7 @@ import os
 
 import numpy as np
 
-from .analytics import (
+from data_intelligence.analytics import (
     build_timeseries,
     compute_correlations,
     compute_seasonality,
