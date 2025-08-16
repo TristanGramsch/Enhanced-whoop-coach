@@ -8,11 +8,14 @@ services:
     image: hrv_orchestrator:dev
     container_name: hrv_orchestrator
     command: python -u run_pipeline.py
+    env_file:
+      - .env
     environment:
       - PYTHONUNBUFFERED=1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
       - OUTPUTS_DIR=/app/shared/outputs
       - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
     volumes:
       - ./data:/app/data:ro
       - ./shared:/app/shared
@@ -66,6 +69,8 @@ services:
     container_name: data_intel_api
     ports:
       - "7000:7000"
+    env_file:
+      - .env
     environment:
       - PYTHONUNBUFFERED=1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
@@ -84,6 +89,8 @@ services:
       dockerfile: Dockerfile
     image: whoop_api:dev
     container_name: whoop_api
+    env_file:
+      - .env
     environment:
       - WHOOP_CLIENT_ID=${WHOOP_CLIENT_ID}
       - WHOOP_CLIENT_SECRET=${WHOOP_CLIENT_SECRET}
@@ -144,6 +151,8 @@ services:
     image: python:3.11
     container_name: dev_agent
     working_dir: /app
+    env_file:
+      - .env
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OUTPUTS_DIR=/app/shared/outputs

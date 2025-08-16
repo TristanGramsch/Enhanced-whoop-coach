@@ -5,6 +5,8 @@ __pycache__/
 # Env and secrets
 .env
 *.env
+credentials
+whoop_api_client/token.json
 
 # Local editor
 .vscode/
@@ -17,5 +19,7 @@ venv/
 # Data artifacts
 shared/outputs/dev_debrief.json
 shared/uploads/
+shared/outputs/
+shared/mlflow/
 # Local scripts
 credentials

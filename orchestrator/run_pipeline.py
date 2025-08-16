@@ -2,6 +2,7 @@ import sys
 import os
 from pathlib import Path
 from datetime import datetime
+import logging
 
 # Ensure module paths are available inside the container
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -29,16 +30,30 @@ def main():
     ensure_directories(outputs_dir, models_dir)
 
     run_id = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    print(f"[orchestrator] Starting pipeline run {run_id}")
+
+    # Configure logging to file and stdout
+    logger = logging.getLogger("orchestrator")
+    logger.setLevel(logging.INFO)
+    log_formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+    file_handler = logging.FileHandler(outputs_dir / "pipeline.log")
+    file_handler.setFormatter(log_formatter)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(log_formatter)
+    # Avoid duplicating handlers on rerun
+    if not logger.handlers:
+        logger.addHandler(file_handler)
+        logger.addHandler(stream_handler)
+
+    logger.info(f"Starting pipeline run {run_id}")
 
     # Stage 0: Journal processing
-    print("[orchestrator] Stage 0: journal_analysis")
+    logger.info("Stage 0: journal_analysis")
     journal_artifacts = run_journal_processing(
         outputs_dir=str(outputs_dir)
     )
 
     # Stage 1: Model training and predictions
-    print("[orchestrator] Stage 1: model_training")
+    logger.info("Stage 1: model_training")
     train_artifacts = run_training_pipeline(
         data_dir=str(REPO_ROOT / "data"),
         models_dir=str(models_dir),
@@ -53,12 +68,12 @@ def main():
             predictions_path=pred_path,
         )
         if rec:
-            print(
-                f"[orchestrator] Tracked next-day prediction for {rec.forecast_for_date}: {rec.predicted_hrv:.2f} ms"
+            logger.info(
+                f"Tracked next-day prediction for {rec.forecast_for_date}: {rec.predicted_hrv:.2f} ms"
             )
 
     # Stage 2: Data intelligence summaries
-    print("[orchestrator] Stage 2: data_intelligence")
+    logger.info("Stage 2: data_intelligence")
     intelligence_artifacts = run_intelligence(
         data_dir=str(REPO_ROOT / "data"),
         outputs_dir=str(outputs_dir),
@@ -66,7 +81,7 @@ def main():
     )
 
     # Stage 3: LLM agent forecast report
-    print("[orchestrator] Stage 3: llm_agent")
+    logger.info("Stage 3: llm_agent")
     agent_artifacts = run_agent(
         outputs_dir=str(outputs_dir)
     )
@@ -76,8 +91,8 @@ def main():
         data_dir=str(REPO_ROOT / "data"),
         outputs_dir=str(outputs_dir),
     )
-    print(
-        f"[orchestrator] Reconcile: updated={recon.get('updated',0)} evaluated={recon.get('n_evaluated',0)} RMSE={recon.get('rmse','NA')}"
+    logger.info(
+        f"Reconcile: updated={recon.get('updated',0)} evaluated={recon.get('n_evaluated',0)} RMSE={recon.get('rmse','NA')}"
     )
 
     # Write simple run log
@@ -98,7 +113,7 @@ def main():
             indent=2,
         )
 
-    print("[orchestrator] Pipeline completed successfully.")
+    logger.info("Pipeline completed successfully.")
 
 
 if __name__ == "__main__":
