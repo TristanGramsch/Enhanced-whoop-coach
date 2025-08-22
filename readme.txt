@@ -1,10 +1,8 @@
-# HRV Prediction Infrastructure
+# Recovery Prediction Infrastructure
 
-This is the MVP of a modular system for predicting future Heart Rate Variability (HRV) based on WHOOP sensor data and daily journal input. 
+This is the MVP of a modular system for predicting future recovery. Recovery is composed by: Heart Rate Variability, Resting Heart Rate, and Respiratory rate (HRV, RHR, RR). Prediction happens using WHOOP sensor data and a journal. 
 
-The architecture is a full analytics environment. With ML experimentation, data intelligence, and voice journal analysis. Each component generates reports. A savy LLM sits on top of the infrastructure. Reads reports. And makes an opinionated HRV prediction for tomorrow and a week in advance. Checks accuracy every day. 
-
----
+The architecture is a full analytics environment. With ML experimentation, data intelligence, and voice journal analysis. A savy LLM sits on top of the infrastructure. Reads reports. And makes an opinionated recovery prediction for tomorrow. Then checks accuracy every day, and remembers. 
 
 ## Project Structure
 
@@ -13,54 +11,49 @@ hrv-infrastructure/
 ├── whoop_api_client/       # Pull and process WHOOP data (FastAPI)
 ├── model_training/         # Train ML models and track experiments with MLflow
 ├── data_intelligence/      # Analyze HRV trends and model outputs
-├── journal_analysis/       # Extract behavioral features from voice journals
-├── llm_agent/              # Reason over data and predict HRV (prompt-based)
+├── journal/       # Record and extract insights from voice journals
+├── llm_agent/              # Reason over data and predict recovery
 ├── orchestrator/           # Schedule and orchestrate all workflows (Dagster)
 ├── shared/                 # Common constants, schemas, and utilities
 └── README.md
 ```
 
-Each subdirectory can be developed as a Git submodule.
-
----
-
 ## Components
 
 ### 1. `whoop_api_client/`
 
-- Pull WHOOP data daily using OAuth2 (client ID & secret).
-- Use FastAPI to implement and trigger data pulls.
-- Process data locally and store it in structured formats (e.g., CSV or Parquet).
+- Continously pull WHOOP data. 
+- Use OAuth2 to authenticate (client ID & secret).
+- Process data and store it in a duckDB.
 
 ### 2. `model_training/`
 
-- Use PyCaret, scikit-learn, XGBoost, or PyTorch for model training.
-- Track all experiments using **MLflow**:
+- Use PyCaret, scikit-learn, XGBoost, or PyTorch for model training. The more models, the better. 
+- Track experiments using **MLflow**:
   - Log model parameters, training metrics, and artifacts.
   - Register top N models (e.g., best 10) for downstream use.
-- Train models to predict:
-  - HRV for the next day.
-  - HRV for the next 7 days (rolling forecast).
+- The most important metric to predict is HRV. But train models to also predict RR and RHR. 
+- Registered models continously re-train and report predictions. 
 
 ### 3. `data_intelligence/`
 
-- Analyze raw WHOOP data and model predictions.
+- Analyze data and model predictions.
 - Identify trends and forecast reliability.
-- Visualize prediction accuracy, HRV trends, and anomalies.
+- Visualize prediction accuracy, HRV, RHR, and RR trends, and anomalies.
 - Output daily and weekly structured summaries for the agent.
 
 ### 4. `journal_analysis/`
 
 - Accept daily voice recordings.
-- Transcribe audio (e.g., via Whisper).
-- Extract structured behavioral/contextual features.
-- Time-align journal insights with WHOOP and model data.
+- Transcribe audio.
+- Perform voice analysis. 
 
 ### 5. `llm_agent/`
 
-- A simple prompt-based LLM that:
+- An agent (like GPT-5) that:
   - Reads in data summaries and model outputs.
-  - Produces a probabilistic HRV forecast.
+  - Remembers past choices and outcomes.
+  - Produces a probabilistic HRV, RHR, RR, forecast.
   - Justifies its prediction in natural language.
 
 ### 6. `orchestrator/`
@@ -70,21 +63,14 @@ Each subdirectory can be developed as a Git submodule.
   - Connect all modules: data pull, journal parse, model run, agent output.
   - Monitor and track task runs.
 
-### 7. `shared/`
+### 7. 'frontend/'
 
-- Store commonly used constants (e.g., metric thresholds, file paths).
-- Shared schemas for structured data across modules.
-- Utility functions reused by more than one submodule (e.g., date formatting, data validators).
+  - For humans. Showing links to all tools. 
+ 
+## Setup 
 
----
-
-## Setup Instructions
-
-### Install Python Dependencies
-
-Each module will have its own `conda` environment. Activate the environment per submodule and install dependencies as defined in each `environment.yml`.
-
---
+Each module is containerized. A compose file orchestrates. 
+Test.  
 
 ## MVP Objective
 
@@ -95,19 +81,3 @@ The MVP should:
 - Transcribe one journal entry
 - Produce an LLM-based probabilistic HRV forecast
 - Log outputs, and allow inspection of where predictions succeed or fail
-
----
-
-## Notes
-
-- All processing is local.
-- Results and logs will be reviewed manually for now (visualization tools to come).
-
----
-
-## Next Steps
-
-- Implement data connectors and base training pipelines.
-- Set up MLflow tracking.
-- Begin defining agent prompts and format of prediction records.
-- Establish Dagster pipelines to automate the daily flow.
