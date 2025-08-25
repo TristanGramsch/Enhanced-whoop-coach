@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Env and secrets
+.env
+*.env
+whoop_client/token.json
+
+# Local editor
+.vscode/
+.idea/
+
+# Virtual environments
+venv/
+**/venv/
+
+# Data
+data/
+outputs/

@@ -1,0 +1,154 @@
+services:
+  orchestrator:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile
+    image: hrv_orchestrator:dev
+    container_name: hrv_orchestrator
+    command: python -u run_pipeline.py
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/outputs
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./training:/app/training:ro
+      - ./analytics:/app/analytics:ro
+      - ./coach:/app/coach:ro
+      - ./journal:/app/journal:ro
+      - ./tests:/app/tests:ro
+    depends_on:
+      - mlflow
+    restart: on-failure
+
+  dashboard:
+    build:
+      context: ./frontend_dashboard
+      dockerfile: Dockerfile
+    image: hrv_dashboard:dev
+    container_name: hrv_dashboard
+    ports:
+      - "8601:8601"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OUTPUTS_DIR=/app/outputs
+    depends_on:
+      - orchestrator
+    volumes:
+      - ./outputs:/app/outputs
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: hrv_frontend:dev
+    container_name: hrv_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OUTPUTS_DIR=/app/outputs
+    volumes:
+      - ./outputs:/app/outputs
+      - ./frontend:/app/frontend:ro
+      - ./data:/app/data:ro
+    restart: unless-stopped
+
+  journal_web:
+    build:
+      context: ./journal
+      dockerfile: Dockerfile.web
+    image: journal_web:dev
+    container_name: journal_web
+    ports:
+      - "8080:8080"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OUTPUTS_DIR=/app/outputs
+    volumes:
+      - ./outputs:/app/outputs
+      - ./journal:/app/journal:ro
+    restart: unless-stopped
+
+  data_intel_api:
+    build:
+      context: ./analytics
+      dockerfile: Dockerfile.api
+    image: data_intelligence_api:dev
+    container_name: data_intel_api
+    ports:
+      - "7000:7000"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/outputs
+    volumes:
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./analytics:/app/analytics:ro
+    depends_on:
+      - mlflow
+    restart: unless-stopped
+
+  whoop_api:
+    build:
+      context: ./whoop_client
+      dockerfile: Dockerfile
+    image: whoop_api:dev
+    container_name: whoop_api
+    env_file:
+      - .env
+    environment:
+      - WHOOP_CLIENT_ID=${WHOOP_CLIENT_ID}
+      - WHOOP_CLIENT_SECRET=${WHOOP_CLIENT_SECRET}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./whoop_client/token.json:/app/whoop_client/token.json
+    restart: unless-stopped
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.16.0
+    container_name: mlflow
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./outputs/mlflow:/mlflow
+    restart: unless-stopped
+
+  dagster_webserver:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile.dagster
+    container_name: dagster_webserver
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data:ro
+      - ./outputs:/app/outputs
+      - ./training:/app/training:ro
+      - ./analytics:/app/analytics:ro
+      - ./coach:/app/coach:ro
+      - ./journal:/app/journal:ro
+      - ./orchestrator/dagster_app:/app/dagster_app
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - OUTPUTS_DIR=/app/outputs
+      - PYTHONPATH=/app
+    depends_on:
+      - mlflow
+    restart: unless-stopped
+
+  # fetch_scheduler removed in new structure
+
+  # dev_agent removed in new structure

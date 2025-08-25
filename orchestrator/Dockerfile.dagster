@@ -1,0 +1,16 @@
+FROM python:3.11
+
+WORKDIR /app
+
+# Install requirements (relative to the orchestrator build context)
+COPY dagster_app/requirements.txt /app/dagster_app/requirements.txt
+RUN pip install --no-cache-dir -r /app/dagster_app/requirements.txt
+
+# Code directories are mounted as volumes at runtime via docker-compose
+# so we don't COPY them during build.
+
+# Default workdir
+WORKDIR /app/dagster_app
+
+EXPOSE 3000
+CMD ["dagster-webserver", "-h", "0.0.0.0", "-p", "3000", "-w", "workspace.yaml"]

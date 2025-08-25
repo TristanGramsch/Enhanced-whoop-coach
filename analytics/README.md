@@ -1,0 +1,3 @@
+# Data Intelligence
+
+This module materializes analytics artifacts for recovery metrics (HRV, RHR, RR): trends, volatility, seasonality, correlations/lag effects, anomalies, data quality checks, forecasts and backtests. Artifacts are written under `outputs/` as versioned JSON/CSV and integrate with MLflow for experiment tracking. Dashboards and APIs read these artifacts to render decision‑ready views that summarize 30/90‑day behavior, drivers, and risks. The orchestrator can trigger recomputation to keep insights fresh and reproducible.

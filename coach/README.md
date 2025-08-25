@@ -1,0 +1,3 @@
+# LLM Agent
+
+This module implements an intelligent reasoning agent that synthesizes data from all other components to produce probabilistic recovery forecasts with natural language explanations. It analyzes analytics summaries and model outputs for HRV, RHR, and RR along with behavioral insights from the journal. The agent generates next‑day and short‑horizon forecasts per metric, and explains its reasoning and key drivers so predictions are interpretable and actionable.

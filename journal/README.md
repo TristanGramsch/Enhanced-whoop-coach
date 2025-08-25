@@ -1,0 +1,3 @@
+# Journal Analysis
+
+This module processes daily voice recordings to extract behavioral and contextual features that influence recovery metrics. It accepts audio input, transcribes with Whisper, and applies lightweight NLP to extract insights about lifestyle factors, stress, training, sleep quality, and other patterns. The features are time‑aligned with WHOOP sensor data and model predictions for HRV, RHR, and RR, providing context that helps the coach produce personalized, accurate forecasts.

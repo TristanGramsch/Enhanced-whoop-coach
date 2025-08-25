@@ -1,0 +1,3 @@
+# Model Training
+
+This module trains machine learning models for recovery metrics using historical WHOOP data and behavioral features: Heart Rate Variability (HRV), Resting Heart Rate (RHR), and Respiratory Rate (RR). It leverages frameworks like scikit-learn, XGBoost, and PyTorch to build models for next-day and short-horizon forecasts per metric. All experiments are tracked with MLflow (parameters, metrics, artifacts), and top models are registered for use downstream. The focus is robust, accurate multi-target forecasting that feeds the analytics and coach modules.

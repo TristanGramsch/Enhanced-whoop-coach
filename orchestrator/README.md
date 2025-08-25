@@ -1,0 +1,3 @@
+# Orchestrator
+
+This module uses Dagster to orchestrate and automate the recovery prediction pipeline across all metrics (HRV, RHR, RR). It defines daily and on‑demand workflows that connect all modules: WHOOP data pulls, journal processing, training/inference per metric, analytics computation, and coach generation. The orchestrator monitors execution, handles failures gracefully, tracks runs, and ensures each component receives the correct inputs at the right time.
