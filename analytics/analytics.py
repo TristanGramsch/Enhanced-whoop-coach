@@ -12,16 +12,17 @@ def _parse_iso_date(ts: str) -> datetime:
 
 
 def build_timeseries(data_dir: str, outputs_dir: str) -> Dict[str, Any]:
-    """Aggregate daily metrics: HRV, RHR, strain, sleep duration, disturbances.
+    """Aggregate daily metrics: HRV, RHR, RR, strain, sleep duration, disturbances.
 
     Writes timeseries.json with a list of daily records sorted by date.
     """
     data_root = Path(data_dir)
-    # Recovery: HRV and RHR
+    # Recovery: HRV, RHR, RR
     recov_path = data_root / "recovery" / "recoveries.json"
     recov = json.loads(recov_path.read_text()) if recov_path.exists() else []
     hrvs_by_day: Dict[str, List[float]] = {}
     rhr_by_day: Dict[str, List[float]] = {}
+    rr_by_day: Dict[str, List[float]] = {}
     for r in recov:
         created_at = r.get("created_at")
         score = r.get("score") or {}
@@ -30,10 +31,13 @@ def build_timeseries(data_dir: str, outputs_dir: str) -> Dict[str, Any]:
         day = _parse_iso_date(created_at).date().isoformat()
         hrv = score.get("hrv_rmssd_milli")
         rhr = score.get("resting_heart_rate")
+        rr = score.get("respiratory_rate") or r.get("respiratory_rate")
         if hrv is not None:
             hrvs_by_day.setdefault(day, []).append(float(hrv))
         if rhr is not None:
             rhr_by_day.setdefault(day, []).append(float(rhr))
+        if rr is not None:
+            rr_by_day.setdefault(day, []).append(float(rr))
 
     # Workouts: daily mean strain
     workouts_path = data_root / "workouts" / "workouts.json"
@@ -69,7 +73,7 @@ def build_timeseries(data_dir: str, outputs_dir: str) -> Dict[str, Any]:
             disturb_by_day.setdefault(day, []).append(int(disturbances))
 
     # Merge days
-    all_days = set(hrvs_by_day) | set(rhr_by_day) | set(strain_by_day) | set(sleep_hours_by_day) | set(disturb_by_day)
+    all_days = set(hrvs_by_day) | set(rhr_by_day) | set(rr_by_day) | set(strain_by_day) | set(sleep_hours_by_day) | set(disturb_by_day)
     daily: List[Dict[str, Any]] = []
     for day in sorted(all_days):
         def mean_or_none(arr: List[float] | List[int] | None) -> float | None:
@@ -81,6 +85,7 @@ def build_timeseries(data_dir: str, outputs_dir: str) -> Dict[str, Any]:
             "date": day,
             "hrv": mean_or_none(hrvs_by_day.get(day)),
             "rhr": mean_or_none(rhr_by_day.get(day)),
+            "rr": mean_or_none(rr_by_day.get(day)),
             "strain": mean_or_none(strain_by_day.get(day)),
             "sleep_hours": mean_or_none(sleep_hours_by_day.get(day)),
             "disturbances": mean_or_none(disturb_by_day.get(day)),
@@ -139,7 +144,7 @@ def compute_correlations(timeseries: Dict[str, Any], outputs_dir: str) -> Dict[s
 
     # Collect vectors
     dates = [d["date"] for d in daily]
-    fields = ["hrv", "rhr", "strain", "sleep_hours", "disturbances"]
+    fields = ["hrv", "rhr", "rr", "strain", "sleep_hours", "disturbances"]
     series: Dict[str, List[float | None]] = {f: [row.get(f) for row in daily] for f in fields}
 
     # Pairwise correlations
@@ -156,7 +161,7 @@ def compute_correlations(timeseries: Dict[str, Any], outputs_dir: str) -> Dict[s
     # Lag correlations: var_k vs hrv_0 for k in [-7..+7]
     lag_window = list(range(-7, 8))
     lag: Dict[str, Dict[str, float | None]] = {}
-    for var in ["rhr", "strain", "sleep_hours", "disturbances"]:
+    for var in ["rhr", "rr", "strain", "sleep_hours", "disturbances"]:
         lag[var] = {}
         v = np.array([np.nan if x is None else float(x) for x in series[var]], dtype=float)
         h = np.array([np.nan if x is None else float(x) for x in series["hrv"]], dtype=float)

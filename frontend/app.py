@@ -47,24 +47,45 @@ with st.expander("Control Center: Services & Actions", expanded=True):
 			except Exception:
 				st.write("Could not read last_run.json")
 
-# Load historical HRV
-recovery_path = DATA_DIR / "recovery" / "recoveries.json"
-with open(recovery_path, "r") as f:
-	records = json.load(f)
-
-daily_map = {}
-for rec in records:
-    created_at = rec.get("created_at")
-    score = rec.get("score", {})
-    if not created_at:
-        continue
-    hrv = score.get("hrv_rmssd_milli")
-    if hrv is None:
-        continue
-    day = datetime.fromisoformat(created_at.replace("Z", "+00:00")).date().isoformat()
-    daily_map.setdefault(day, []).append(float(hrv))
-
-history = sorted([(k, float(np.mean(v))) for k, v in daily_map.items()], key=lambda x: x[0])
+# Load historical timeseries (HRV, RHR, RR, strain, etc.)
+ts_path = OUTPUTS_DIR / "timeseries.json"
+daily = []
+if ts_path.exists():
+    try:
+        ts = json.loads(ts_path.read_text())
+        daily = ts.get("daily", [])
+    except Exception:
+        daily = []
+else:
+    # Fallback: compute minimal daily series from recoveries.json (HRV/RHR only)
+    recovery_path = DATA_DIR / "recovery" / "recoveries.json"
+    try:
+        with open(recovery_path, "r") as f:
+            records = json.load(f)
+        agg = {}
+        for rec in records:
+            created_at = rec.get("created_at")
+            score = rec.get("score", {})
+            if not created_at:
+                continue
+            day = datetime.fromisoformat(created_at.replace("Z", "+00:00")).date().isoformat()
+            hrv = score.get("hrv_rmssd_milli")
+            rhr = score.get("resting_heart_rate")
+            if hrv is not None:
+                agg.setdefault(day, {}).setdefault("hrv", []).append(float(hrv))
+            if rhr is not None:
+                agg.setdefault(day, {}).setdefault("rhr", []).append(float(rhr))
+        for day in sorted(agg.keys()):
+            vals = agg[day]
+            def mean_or_none(arr):
+                return float(np.mean(arr)) if arr else None
+            daily.append({
+                "date": day,
+                "hrv": mean_or_none(vals.get("hrv")),
+                "rhr": mean_or_none(vals.get("rhr")),
+            })
+    except Exception:
+        daily = []
 
 # Load predictions and artifacts
 pred_path = OUTPUTS_DIR / "model_predictions.json"
@@ -87,12 +108,34 @@ journal = {}
 if journal_path.exists():
     journal = json.loads(journal_path.read_text())
 
-# Plot simple line chart using Streamlit built-in
-obs_dates = [d for d, _ in history]
-obs_values = [v for _, v in history]
-
-st.line_chart({"Observed HRV": obs_values})
-st.caption(f"Observed days: {len(obs_values)}")
+# Overview: All-time metrics
+st.subheader("Overview: All-time metrics")
+if daily:
+    try:
+        import pandas as pd
+        df = pd.DataFrame(daily)
+        if "date" in df.columns:
+            df["date"] = pd.to_datetime(df["date"], errors="coerce")
+            df = df.sort_values("date").set_index("date")
+        colA, colB = st.columns(2)
+        with colA:
+            if "hrv" in df.columns:
+                st.line_chart(df[["hrv"]].rename(columns={"hrv": "HRV"}))
+            if "rr" in df.columns:
+                st.line_chart(df[["rr"]].rename(columns={"rr": "RR"}))
+        with colB:
+            if "rhr" in df.columns:
+                st.line_chart(df[["rhr"]].rename(columns={"rhr": "RHR"}))
+            if "strain" in df.columns:
+                st.line_chart(df[["strain"]].rename(columns={"strain": "Strain"}))
+        st.caption(f"History days: {len(df)}")
+    except Exception:
+        # Simple fallback chart for HRV if DataFrame processing fails
+        hrv_vals = [row.get("hrv") for row in daily if row.get("hrv") is not None]
+        if hrv_vals:
+            st.line_chart({"HRV": hrv_vals})
+else:
+    st.write("No timeseries available. Run the intelligence pipeline.")
 
 fcst = preds.get("next_7_day_forecast", [])
 if fcst:
