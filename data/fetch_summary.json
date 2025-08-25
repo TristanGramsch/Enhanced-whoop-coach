@@ -1,6 +1,6 @@
 {
-  "fetch_completed_at": "2025-08-16T02:21:38.038776",
-  "fetch_duration_seconds": 1.922199,
+  "fetch_completed_at": "2025-08-25T15:33:51.915255",
+  "fetch_duration_seconds": 1.343935,
   "data_types_fetched": [
     "user_profile",
     "body_measurements",
