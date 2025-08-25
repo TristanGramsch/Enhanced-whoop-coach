@@ -6,6 +6,7 @@ COPY requirements.txt /app/frontend/requirements.txt
 RUN pip install --no-cache-dir -r /app/frontend/requirements.txt
 
 COPY app.py /app/frontend/app.py
+COPY pages /app/frontend/pages
 
 WORKDIR /app/frontend
 EXPOSE 8501
