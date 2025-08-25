@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from dagster import job, op, Definitions
+from dagster import job, op, Definitions, ScheduleDefinition
 
 # Extend sys.path for module imports
 import sys
@@ -56,4 +56,10 @@ def hrv_daily_job():
     _a = agent_op()
 
 
-defs = Definitions(jobs=[hrv_daily_job])
+daily_schedule = ScheduleDefinition(
+    job=hrv_daily_job,
+    cron_schedule="0 5 * * *",  # 05:00 UTC daily
+    execution_timezone="UTC",
+)
+
+defs = Definitions(jobs=[hrv_daily_job], schedules=[daily_schedule])
