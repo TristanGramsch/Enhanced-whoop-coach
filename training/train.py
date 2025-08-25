@@ -9,6 +9,21 @@ import os
 import math
 import numpy as np
 
+# Optional sklearn/xgboost
+try:
+    from sklearn.linear_model import Ridge as SkRidge, Lasso, ElasticNet
+    from sklearn.ensemble import RandomForestRegressor
+    import joblib  # sklearn dependency, used for persistence
+    SKLEARN_AVAILABLE = True
+except Exception:
+    SKLEARN_AVAILABLE = False
+
+try:
+    import xgboost as xgb  # type: ignore
+    XGBOOST_AVAILABLE = True
+except Exception:
+    XGBOOST_AVAILABLE = False
+
 # Optional MLflow
 try:
     import mlflow  # type: ignore
@@ -129,6 +144,37 @@ def forecast_next_days(daily: List[Tuple[datetime, float]], w: np.ndarray, horiz
     return forecasts
 
 
+def forecast_next_days_regressor(
+    daily: List[Tuple[datetime, float]],
+    model: Any,
+    max_lag: int = 7,
+    horizon: int = 7,
+) -> List[Dict[str, Any]]:
+    history_dates = [d for d, _ in daily]
+    history_values = [v for _, v in daily]
+
+    forecasts: List[Dict[str, Any]] = []
+
+    for step in range(1, horizon + 1):
+        recent = history_values[-max_lag:][::-1]
+        lag_feats: List[float] = []
+        for lag in range(1, max_lag + 1):
+            if lag <= len(recent):
+                lag_feats.append(recent[lag - 1])
+            else:
+                lag_feats.append(recent[-1])
+        ma3 = float(np.mean(history_values[-3:])) if len(history_values) >= 3 else history_values[-1]
+        ma7 = float(np.mean(history_values[-7:])) if len(history_values) >= 7 else ma3
+        dow = (history_dates[-1].weekday() + step) % 7
+        feats = np.array(lag_feats + [ma3, ma7, float(dow)], dtype=float).reshape(1, -1)
+        pred = float(model.predict(feats)[0])
+        future_dt = history_dates[-1] + timedelta(days=1)
+        forecasts.append({"date": future_dt.date().isoformat(), "predicted_hrv": pred})
+        history_values.append(pred)
+        history_dates.append(future_dt)
+
+    return forecasts
+
 def moving_average_baseline(daily: List[Tuple[datetime, float]], window: int = 3) -> Dict[str, Any]:
     values = np.array([v for _, v in daily], dtype=float)
     preds = []
@@ -201,41 +247,149 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
     X_train, X_test = X[:split], X[split:]
     y_train, y_test = y[:split], y[split:]
 
-    # Model A: Ridge
+    # Candidate models
+    candidate_metrics: Dict[str, Dict[str, Any]] = {}
+    trained_models: Dict[str, Any] = {}
+
+    # Model A: Closed-form ridge
     w = fit_ridge_closed_form(X_train, y_train, alpha=1.0)
     if len(y_test) > 0:
-        y_pred = predict_with_weights(X_test, w)
-        ridge_metrics = compute_metrics(y_test, y_pred)
+        y_pred_cf = predict_with_weights(X_test, w)
+        ridge_metrics = compute_metrics(y_test, y_pred_cf)
         ridge_metrics.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
     else:
-        y_pred = predict_with_weights(X_train, w)
-        ridge_metrics = compute_metrics(y_train, y_pred)
+        y_pred_cf = predict_with_weights(X_train, w)
+        ridge_metrics = compute_metrics(y_train, y_pred_cf)
         ridge_metrics.update({"n_train": int(len(y_train)), "n_test": 0, "note": "no holdout"})
+    candidate_metrics["ridge_closed_form"] = ridge_metrics
 
     # Model B: Moving average baseline (uses only history)
     ma_metrics = moving_average_baseline(daily, window=3)
+    candidate_metrics["moving_average_3"] = ma_metrics
 
-    # Select best by RMSE
-    best_name = "ridge_closed_form" if ridge_metrics.get("rmse", float("inf")) <= ma_metrics.get("rmse", float("inf")) else "moving_average_3"
+    # Additional models (scikit-learn)
+    if SKLEARN_AVAILABLE:
+        # sklearn Ridge (optimizer-based)
+        try:
+            sk_ridge = SkRidge(alpha=1.0)
+            sk_ridge.fit(X_train, y_train)
+            trained_models["sk_ridge"] = sk_ridge
+            y_pred = sk_ridge.predict(X_test) if len(y_test) > 0 else sk_ridge.predict(X_train)
+            m = compute_metrics(y_test if len(y_test) > 0 else y_train, y_pred)
+            m.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+            candidate_metrics["sklearn_ridge"] = m
+        except Exception:
+            pass
 
-    # Save model artifact(s)
+        # Lasso
+        try:
+            lasso = Lasso(alpha=0.001, max_iter=10000)
+            lasso.fit(X_train, y_train)
+            trained_models["lasso"] = lasso
+            y_pred = lasso.predict(X_test) if len(y_test) > 0 else lasso.predict(X_train)
+            m = compute_metrics(y_test if len(y_test) > 0 else y_train, y_pred)
+            m.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+            candidate_metrics["lasso"] = m
+        except Exception:
+            pass
+
+        # ElasticNet
+        try:
+            en = ElasticNet(alpha=0.001, l1_ratio=0.5, max_iter=10000)
+            en.fit(X_train, y_train)
+            trained_models["elasticnet"] = en
+            y_pred = en.predict(X_test) if len(y_test) > 0 else en.predict(X_train)
+            m = compute_metrics(y_test if len(y_test) > 0 else y_train, y_pred)
+            m.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+            candidate_metrics["elasticnet"] = m
+        except Exception:
+            pass
+
+        # RandomForest
+        try:
+            rf = RandomForestRegressor(n_estimators=200, random_state=42)
+            rf.fit(X_train, y_train)
+            trained_models["random_forest"] = rf
+            y_pred = rf.predict(X_test) if len(y_test) > 0 else rf.predict(X_train)
+            m = compute_metrics(y_test if len(y_test) > 0 else y_train, y_pred)
+            m.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+            candidate_metrics["random_forest"] = m
+        except Exception:
+            pass
+
+    # XGBoost model
+    if XGBOOST_AVAILABLE:
+        try:
+            xgbr = xgb.XGBRegressor(
+                n_estimators=300,
+                learning_rate=0.05,
+                max_depth=4,
+                subsample=0.8,
+                colsample_bytree=0.8,
+                random_state=42,
+                tree_method="hist",
+            )
+            xgbr.fit(X_train, y_train)
+            trained_models["xgboost"] = xgbr
+            y_pred = xgbr.predict(X_test) if len(y_test) > 0 else xgbr.predict(X_train)
+            # xgb returns numpy array
+            m = compute_metrics(y_test if len(y_test) > 0 else y_train, np.array(y_pred))
+            m.update({"n_train": int(len(y_train)), "n_test": int(len(y_test))})
+            candidate_metrics["xgboost"] = m
+        except Exception:
+            pass
+
+    # MLflow logging per candidate (nested runs)
+    if use_mlflow:
+        try:
+            for name, m in candidate_metrics.items():
+                with mlflow.start_run(run_name=f"candidate_{name}", nested=True):
+                    mlflow.log_param("model", name)
+                    for mk, mv in m.items():
+                        if isinstance(mv, (int, float)) and not math.isnan(mv) and not math.isinf(mv):
+                            mlflow.log_metric(mk, float(mv))
+        except Exception:
+            # Avoid training failure due to logging issues
+            pass
+
+    # Select best by RMSE across all candidates
+    best_name = min(candidate_metrics.keys(), key=lambda n: candidate_metrics[n].get("rmse", float("inf")))
+
+    # Save model artifact(s) and produce forecast
     if best_name == "ridge_closed_form":
         model_path = Path(models_dir) / "hrv_ridge_weights.json"
         with open(model_path, "w") as f:
             json.dump({"weights": w.tolist(), "type": "ridge_closed_form"}, f)
-        # Forecast next 7 days using ridge
         fcst = forecast_next_days(daily, w, horizon=7)
-    else:
+    elif best_name == "moving_average_3":
         model_path = Path(models_dir) / "ma3_model.json"
         with open(model_path, "w") as f:
             json.dump({"type": "moving_average_3"}, f)
-        # MA forecast: repeat last ma3 for 7 days
         last_ma3 = float(np.mean([v for _, v in daily][-3:])) if len(daily) >= 3 else float(daily[-1][1])
         fcst = []
         last_date = daily[-1][0]
         for step in range(1, 8):
             future_dt = last_date + timedelta(days=step)
             fcst.append({"date": future_dt.date().isoformat(), "predicted_hrv": last_ma3})
+    else:
+        # sklearn/xgboost model selected
+        selected_model = trained_models.get(best_name if best_name != "sklearn_ridge" else "sk_ridge")
+        if selected_model is None and best_name in ("lasso", "elasticnet", "random_forest", "xgboost"):
+            selected_model = trained_models.get(best_name)
+        model_path = Path(models_dir) / f"{best_name}.pkl"
+        try:
+            if SKLEARN_AVAILABLE:
+                joblib.dump(selected_model, model_path)
+            else:
+                # Fallback to pickle if joblib unavailable
+                import pickle
+                with open(model_path, "wb") as f:
+                    pickle.dump(selected_model, f)
+        except Exception:
+            # As a last resort, write a stub json
+            with open(Path(models_dir) / f"{best_name}.json", "w") as f:
+                json.dump({"type": best_name}, f)
+        fcst = forecast_next_days_regressor(daily, selected_model, max_lag=7, horizon=7)
 
     # Persist predictions
     predictions_path = Path(outputs_dir) / "model_predictions.json"
@@ -248,33 +402,52 @@ def run_training_pipeline(data_dir: str, models_dir: str, outputs_dir: str) -> D
         }, f, indent=2)
 
     # Compose combined metrics
-    metrics = {
-        "selected_model": best_name,
-        "ridge_rmse": ridge_metrics.get("rmse"),
-        "ridge_mae": ridge_metrics.get("mae"),
-        "ma3_rmse": ma_metrics.get("rmse"),
-        "ma3_mae": ma_metrics.get("mae"),
-        "n_train": ridge_metrics.get("n_train", 0),
-        "n_test": ridge_metrics.get("n_test", 0),
-    }
+    metrics = {"selected_model": best_name}
+    # fold in all candidate metrics with namespaced keys
+    for name, m in candidate_metrics.items():
+        for mk, mv in m.items():
+            if mk in ("n_train", "n_test"):
+                # keep a single n_train/n_test representative
+                metrics[mk] = m[mk]
+            else:
+                metrics[f"{name}_{mk}"] = mv
 
     metrics_path = Path(outputs_dir) / "training_metrics.json"
     with open(metrics_path, "w") as f:
         json.dump(metrics, f, indent=2)
 
     if use_mlflow:
-        mlflow.log_params({"candidate_models": "ridge_closed_form,moving_average_3", "alpha": 1.0})
-        # Log both candidates
-        mlflow.log_metrics({
-            "ridge_rmse": metrics["ridge_rmse"],
-            "ridge_mae": metrics["ridge_mae"],
-            "ma3_rmse": metrics["ma3_rmse"],
-            "ma3_mae": metrics["ma3_mae"],
-        })
-        mlflow.log_artifact(str(model_path))
-        mlflow.log_artifact(str(predictions_path))
-        mlflow.log_artifact(str(metrics_path))
-        mlflow.end_run()
+        # Summarize in parent run
+        try:
+            mlflow.log_param("candidate_models", ",".join(candidate_metrics.keys()))
+            # Log selected model and top-line metrics
+            mlflow.log_param("selected_model", best_name)
+            for k, v in metrics.items():
+                if isinstance(v, (int, float)) and not math.isnan(v) and not math.isinf(v):
+                    mlflow.log_metric(k, float(v))
+            # Log artifacts
+            if Path(model_path).exists():
+                mlflow.log_artifact(str(model_path))
+            mlflow.log_artifact(str(predictions_path))
+            mlflow.log_artifact(str(metrics_path))
+
+            # If the selected model is a sklearn/xgboost model, also log via MLflow flavor and register
+            try:
+                if best_name in ("sklearn_ridge", "lasso", "elasticnet", "random_forest"):
+                    import mlflow.sklearn  # type: ignore
+                    mlflow.sklearn.log_model(
+                        sk_model=selected_model, artifact_path="model", registered_model_name="hrv_forecaster"
+                    )
+                elif best_name == "xgboost":
+                    import mlflow.xgboost  # type: ignore
+                    mlflow.xgboost.log_model(
+                        xgb_model=selected_model, artifact_path="model", registered_model_name="hrv_forecaster"
+                    )
+            except Exception:
+                # Non-fatal if flavor logging fails
+                pass
+        finally:
+            mlflow.end_run()
 
     return {
         "model_path": str(model_path),
