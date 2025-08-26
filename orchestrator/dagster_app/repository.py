@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from dagster import job, op, Definitions
+from dagster import job, op, Definitions, multiprocess_executor
 
 # Extend sys.path for module imports
 import sys
@@ -16,6 +16,10 @@ from journal.process_journal import run_journal_processing  # type: ignore
 from training.train import run_training_pipeline  # type: ignore
 from analytics.analyze import run_intelligence  # type: ignore
 from coach.agent import run_agent  # type: ignore
+from analytics.prediction_tracking import (  # type: ignore
+    append_next_day_prediction,
+    reconcile_with_actuals,
+)
 
 OUTPUTS_DIR = os.environ.get("OUTPUTS_DIR", str(REPO_ROOT / "outputs"))
 
@@ -44,16 +48,39 @@ def intelligence_op(train_artifacts):
 
 
 @op
-def agent_op():
+def tracking_op(train_artifacts):
+    predictions_path = train_artifacts.get("predictions_path") if isinstance(train_artifacts, dict) else None
+    if predictions_path:
+        return append_next_day_prediction(
+            outputs_dir=str(OUTPUTS_DIR),
+            predictions_path=predictions_path,
+        )
+    return None
+
+
+@op
+def agent_op(intelligence_artifacts):
+    # Depend on intelligence_op to ensure the summary exists before the agent runs
     return run_agent(outputs_dir=str(OUTPUTS_DIR))
 
 
-@job
+@op
+def reconcile_op(agent_artifacts):
+    # Run after agent to reconcile predictions with actuals
+    return reconcile_with_actuals(
+        data_dir=str(REPO_ROOT / "data"),
+        outputs_dir=str(OUTPUTS_DIR),
+    )
+
+
+@job(executor_def=multiprocess_executor)
 def hrv_daily_job():
     _j = journal_op()
     t = training_op()
     i = intelligence_op(t)
-    _a = agent_op()
+    _track = tracking_op(t)
+    _a = agent_op(i)
+    _recon = reconcile_op(_a)
 
 
 defs = Definitions(jobs=[hrv_daily_job])

@@ -65,6 +65,7 @@ recovery-infrastructure/
   - Define daily and on-demand pipelines.
   - Connect all modules: data pull, journal parse, model run, agent output.
   - Monitor and track task runs.
+- See `orchestrator/DAGSTER.md` for a concise narrative of why and how we use Dagster here.
 
 ### 7. `frontend/`
 
