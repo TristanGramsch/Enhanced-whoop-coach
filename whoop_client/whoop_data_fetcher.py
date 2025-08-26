@@ -29,7 +29,7 @@ class WHOOPDataFetcher:
                 if next_token:
                     current_params["nextToken"] = next_token
                     
-                print(f"  📄 Fetching page {page} from {endpoint}")
+                print(f"  Fetching page {page} from {endpoint}")
                 
                 try:
                     response = await client.get(
@@ -39,7 +39,7 @@ class WHOOPDataFetcher:
                     )
                     
                     if response.status_code == 429:
-                        print("  ⏸️  Rate limited, waiting 60 seconds...")
+                        print("  Rate limited, waiting 60 seconds...")
                         await asyncio.sleep(60)
                         continue
                         
@@ -56,7 +56,7 @@ class WHOOPDataFetcher:
                         
                     all_records.extend(records)
                     
-                    print(f"    ✅ Got {len(records)} records")
+                    print(f"    Retrieved {len(records)} records")
                     
                     if not next_token or not records:
                         break
@@ -67,10 +67,10 @@ class WHOOPDataFetcher:
                     await asyncio.sleep(0.5)
                     
                 except httpx.HTTPStatusError as e:
-                    print(f"    ❌ HTTP error {e.response.status_code}: {e.response.text}")
+                    print(f"    HTTP error {e.response.status_code}: {e.response.text}")
                     break
                 except Exception as e:
-                    print(f"    ❌ Error: {e}")
+                    print(f"    Error: {e}")
                     break
                     
         return all_records
@@ -85,7 +85,7 @@ class WHOOPDataFetcher:
                 )
                 
                 if response.status_code == 429:
-                    print("  ⏸️  Rate limited, waiting 60 seconds...")
+                    print("  Rate limited, waiting 60 seconds...")
                     await asyncio.sleep(60)
                     return await self.fetch_single_data(endpoint)
                     
@@ -93,10 +93,10 @@ class WHOOPDataFetcher:
                 return response.json()
                 
             except httpx.HTTPStatusError as e:
-                print(f"    ❌ HTTP error {e.response.status_code}: {e.response.text}")
+                print(f"    HTTP error {e.response.status_code}: {e.response.text}")
                 return None
             except Exception as e:
-                print(f"    ❌ Error: {e}")
+                print(f"    Error: {e}")
                 return None
     
     def save_data(self, data: Dict | List, filename: str, subfolder: str = ""):
@@ -112,11 +112,11 @@ class WHOOPDataFetcher:
         with open(filepath, 'w') as f:
             json.dump(data, f, indent=2, default=str)
             
-        print(f"    💾 Saved to {filepath}")
+        print(f"    Saved to {filepath}")
     
     async def fetch_user_data(self):
         """Fetch user profile and body measurements"""
-        print("🔵 Fetching User Profile Data...")
+        print("Fetching user profile data...")
         
         # Basic profile
         profile = await self.fetch_single_data("/user/profile/basic")
@@ -130,7 +130,7 @@ class WHOOPDataFetcher:
     
     async def fetch_cycles_data(self):
         """Fetch all cycles data"""
-        print("🟢 Fetching Cycles Data...")
+        print("Fetching cycles data...")
         
         # Get cycles with a reasonable time range (last 2 years)
         end_date = datetime.now()
@@ -160,7 +160,7 @@ class WHOOPDataFetcher:
     
     async def fetch_recovery_data(self):
         """Fetch all recovery data"""
-        print("🟡 Fetching Recovery Data...")
+        print("Fetching recovery data...")
         
         # Get recovery with a reasonable time range (last 2 years)
         end_date = datetime.now()
@@ -178,7 +178,7 @@ class WHOOPDataFetcher:
     
     async def fetch_sleep_data(self):
         """Fetch all sleep data"""
-        print("🟣 Fetching Sleep Data...")
+        print("Fetching sleep data...")
         
         # Get sleep with a reasonable time range (last 2 years)
         end_date = datetime.now()
@@ -202,7 +202,7 @@ class WHOOPDataFetcher:
     
     async def fetch_workout_data(self):
         """Fetch all workout data"""
-        print("🔴 Fetching Workout Data...")
+        print("Fetching workout data...")
         
         # Get workouts with a reasonable time range (last 2 years)
         end_date = datetime.now() 
@@ -226,8 +226,8 @@ class WHOOPDataFetcher:
     
     async def fetch_all_data(self):
         """Fetch all WHOOP data"""
-        print("🚀 Starting comprehensive WHOOP data fetch...")
-        print(f"📁 Data will be saved to: {self.data_dir.absolute()}")
+        print("Starting comprehensive WHOOP data fetch...")
+        print(f"Data will be saved to: {self.data_dir.absolute()}")
         
         start_time = datetime.now()
         
@@ -260,12 +260,12 @@ class WHOOPDataFetcher:
             
             self.save_data(summary, "fetch_summary", "")
             
-            print(f"\n✅ Data fetch completed successfully!")
-            print(f"⏱️  Total time: {duration.total_seconds():.1f} seconds")
-            print(f"📊 Check the {self.data_dir} folder for all your WHOOP data!")
+            print("Data fetch completed successfully.")
+            print(f"Total time: {duration.total_seconds():.1f} seconds")
+            print(f"Check the {self.data_dir} folder for all your WHOOP data.")
             
         except Exception as e:
-            print(f"\n❌ Error during data fetch: {e}")
+            print(f"Error during data fetch: {e}")
             raise
 
 async def main():
