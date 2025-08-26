@@ -129,11 +129,11 @@ async def callback(request: Request):
         </head>
         <body>
             <div class="container">
-                <h2 class="success">Successfully connected to WHOOP!</h2>
+                <h2 class="success">Connected to WHOOP</h2>
                 <p>You can now access your WHOOP data using API v2 endpoints.</p>
-                <p>Ready to fetch comprehensive data to your local /data folder!</p>
+                <p>You may fetch data to your local /data folder.</p>
                 <a href="/" class="button">Go back to home</a>
-                <a href="/fetch-data" class="button" style="background-color: #28a745;">Fetch All Data Now</a>
+                <a href="/fetch-data" class="button" style="background-color: #28a745;">Fetch data</a>
             </div>
         </body>
     </html>
@@ -268,20 +268,20 @@ async def fetch_comprehensive_data(background_tasks: BackgroundTasks):
         </head>
         <body>
             <div class="container">
-                <h2>Comprehensive Data Fetch Started!</h2>
+                <h2>Data fetch started</h2>
                 <p>Your WHOOP data is being fetched and will be saved to the <code>/data</code> folder.</p>
                 <p>This includes:</p>
                 <ul>
-                    <li>👤 User Profile & Body Measurements</li>
-                    <li>🔄 Physiological Cycles (last 2 years)</li>
-                    <li>😴 Recovery Data (last 2 years)</li>
-                    <li>🛌 Sleep Data (last 2 years)</li>
-                    <li>💪 Workout Data (last 2 years)</li>
+                    <li>User profile and body measurements</li>
+                    <li>Physiological cycles (last 2 years)</li>
+                    <li>Recovery data (last 2 years)</li>
+                    <li>Sleep data (last 2 years)</li>
+                    <li>Workout data (last 2 years)</li>
                 </ul>
-                <p><strong>⏱️ Expected time:</strong> 3-10 minutes depending on your data history</p>
-                <p><strong>📁 Data location:</strong> <code>Enhanced-whoop-coach/data/</code></p>
+                <p><strong>Expected time:</strong> 3-10 minutes depending on your data history</p>
+                <p><strong>Data location:</strong> <code>Enhanced-whoop-coach/data/</code></p>
                 
-                <a href="/fetch-data" class="button">Check Status</a>
+                <a href="/fetch-data" class="button">Check status</a>
                 <a href="/" class="button">Go back to home</a>
             </div>
         </body>
@@ -306,11 +306,11 @@ async def get_tokens():
 if __name__ == "__main__":
     import uvicorn
     
-    print("   🏃‍♀️ Starting WHOOP FastAPI server (API v2)...")
+    print("   Starting WHOOP FastAPI server (API v2)...")
     print("   Make sure to set your environment variables:")
     print("   export WHOOP_CLIENT_ID='your_client_id'")
     print("   export WHOOP_CLIENT_SECRET='your_client_secret'")
-    print("🌐 Server will be available at: http://localhost:8000")
-    print("📊 Ready to fetch comprehensive WHOOP data to /data folder!")
+    print("Server will be available at: http://localhost:8000")
+    print("Ready to fetch WHOOP data to /data folder.")
     
     uvicorn.run(app, host="0.0.0.0", port=8000) 
